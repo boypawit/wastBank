@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wastbank</string>
+    <string name="app_name">Waste Bank</string>
     <string name="title_activity_main1">หน้าหลัก</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
