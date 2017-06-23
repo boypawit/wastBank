@@ -76,7 +76,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468"
+        app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/ic_add_a_photo"  />
 
     <TextView
@@ -92,7 +92,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintHorizontal_bias="0.291"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -111,7 +111,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.748"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -140,18 +140,44 @@
         android:id="@+id/editText4"
         android:layout_width="57dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="163dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="170dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:gravity="top|center_horizontal"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="ลดแก้ว"
+        app:layout_constraintLeft_toLeftOf="@+id/imageGlass"
+        app:layout_constraintRight_toLeftOf="@+id/imageBottle"
+        app:layout_constraintTop_toTopOf="@+id/imageGlass"
+        android:layout_marginTop="119dp"
+        app:layout_constraintHorizontal_bias="0.49" />
+
+    <TextView
+        android:id="@+id/textView74"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="119dp"
+        android:text="ลดขวด"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintLeft_toLeftOf="@+id/imageBottle"
+        app:layout_constraintRight_toRightOf="@+id/imageBottle"
+        app:layout_constraintTop_toTopOf="@+id/imageBottle" />
 
 </android.support.constraint.ConstraintLayout>

@@ -53,10 +53,10 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="serif-monospace"
-        android:text="LOGIN"
+        android:text="เข้าสู่ระบบ"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="65sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,19 +67,19 @@
 
     <Button
         android:id="@+id/Loginbutton"
-        android:layout_width="106dp"
+        android:layout_width="122dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="149dp"
+        android:layout_marginLeft="131dp"
         android:layout_marginTop="8dp"
-        android:text="LOGIN"
+        android:text="เข้าสู่ระบบ"
         android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.749" />
 
     <Button
         android:id="@+id/fogotbutton"
@@ -90,7 +90,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorwite"
-        android:text="forgot password?"
+        android:text="ลืมรหัสผ่าน?"
         android:textColor="@color/colorBlue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
