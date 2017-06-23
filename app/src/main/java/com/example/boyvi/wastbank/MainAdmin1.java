@@ -81,11 +81,7 @@ public class MainAdmin1 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_main) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.nav_gallery) {
+         if (id == R.id.nav_gallery) {
             Intent intent = new Intent(MainAdmin1.this,MainAdmin1.class);
             startActivity(intent);
 
