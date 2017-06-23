@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Wastbank</string>
+    <string name="title_activity_main1">หน้าหลัก</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">ลดขยะ แก้ว/ขวด</string>
+    <string name="title_activity_main3">ดูสถิติ</string>
+    <string name="title_activity_main_admin">เริ่มต้น</string>
+    <string name="title_activity_main_admin1">สถิติรวม</string>
+    <string name="title_activity_main_admin2">ค้นหาสมาชิก</string>
+    <string name="title_activity_main_admin3">ลดขยะ แก้ว/ขวด</string>
+    <string name="title_activity_main_admin4">สถิติของคุณ</string>
+</resources>
