@@ -128,8 +128,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="104dp"
-        android:layout_height="136dp"
+        android:layout_width="105dp"
+        android:layout_height="102dp"
         app:srcCompat="@drawable/bottle1"
         android:layout_marginLeft="196dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -140,12 +140,13 @@
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintVertical_bias="0.384"
+        tools:layout_editor_absoluteY="67dp" />
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="104dp"
-        android:layout_height="136dp"
+        android:layout_width="103dp"
+        android:layout_height="102dp"
         app:srcCompat="@drawable/glass1"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -156,7 +157,9 @@
         app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintVertical_bias="0.384"
+        tools:layout_editor_absoluteY="67dp"
+        tools:layout_editor_absoluteX="70dp" />
 
     <TextView
         android:id="@+id/textView75"
