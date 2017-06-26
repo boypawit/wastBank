@@ -20,24 +20,25 @@ import android.widget.Button;
 public class Main1 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
-        builder.setTitle("                      รู้หรือไม่?");
-        builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
-                             "แก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");   
-        builder.show();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
+                builder.setTitle("                      รู้หรือไม่?");
+                builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
+                        "แก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+                builder.setNegativeButton("ตกลง", null);
+                builder.show();
+
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

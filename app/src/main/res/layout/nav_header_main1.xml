@@ -15,11 +15,11 @@
     android:weightSum="1">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="50dp"
+        android:id="@+id/circleImageView"
+        android:layout_width="69dp"
         android:layout_height="50dp"
-        android:src="@drawable/testuser"
 
-        />
+        android:src="@drawable/testuser" />
 
 
     <TextView
