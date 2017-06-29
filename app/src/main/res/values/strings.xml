@@ -13,4 +13,5 @@
     <string name="title_activity_main_admin2">ค้นหาสมาชิก</string>
     <string name="title_activity_main_admin3">ลดขยะ แก้ว/ขวด</string>
     <string name="title_activity_main_admin4">สถิติของคุณ</string>
+    <string name="title_activity_main_admin0">MainAdmin0</string>
 </resources>

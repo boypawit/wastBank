@@ -15,16 +15,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
-
-
         <activity
             android:name=".Main1"
             android:label="@string/title_activity_main1"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Main2"
             android:label="@string/title_activity_main2"
@@ -44,22 +39,15 @@
         <activity
             android:name=".MainAdmin2"
             android:label="@string/title_activity_main_admin2"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainAdmin3"
             android:label="@string/title_activity_main_admin3"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainAdmin4"
             android:label="@string/title_activity_main_admin4"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -2,22 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-
         <item
-            android:id="@+id/nav_static"
+            android:id="@+id/nav_index"
             android:icon="@drawable/ic_home"
             android:title="เริ่มต้น" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_reducebin"
-            android:title="ลดขยะ แก้ว/ขวด" />
 
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_reduce"
+            android:icon="@drawable/ic_reducebin"
+            android:title="ลดขยะ แก้ว/ขวด" />
+        <item
+            android:id="@+id/nav_staticyou"
+            android:icon="@drawable/ic_staticyou"
+            android:title="สถิติของคุณ" />
+
+        <item
+            android:id="@+id/nav_staticall"
             android:icon="@drawable/ic_graph"
             android:title="สถืติรวม" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_search"
             android:icon="@drawable/ic_search"
             android:title="ค้นหาสมาชิก" />
     </group>
@@ -25,10 +29,10 @@
     <item android:title="เพิ่มเติม">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
                 android:title="ลงชื่ออก" />
+
         </menu>
     </item>
-
 </menu>

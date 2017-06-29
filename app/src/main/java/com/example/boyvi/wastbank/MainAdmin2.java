@@ -81,23 +81,25 @@ public class MainAdmin2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(MainAdmin2.this,MainAdmin1.class);
+        if (id == R.id.nav_index) {
+            Intent intent = new Intent(MainAdmin2.this,MainAdmin.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_slideshow) {
-            Intent intent = new Intent(MainAdmin2.this,MainAdmin2.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_manage) {
+        }else if (id == R.id.nav_reduce) {
             Intent intent = new Intent(MainAdmin2.this,MainAdmin3.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_static) {
+        } else if (id == R.id.nav_staticyou) {
             Intent intent = new Intent(MainAdmin2.this,MainAdmin4.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_staticall) {
+            Intent intent = new Intent(MainAdmin2.this,MainAdmin1.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_search) {
+            Intent intent = new Intent(MainAdmin2.this,MainAdmin2.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
             Intent intent = new Intent(MainAdmin2.this,MainActivity.class);
             startActivity(intent);
         }

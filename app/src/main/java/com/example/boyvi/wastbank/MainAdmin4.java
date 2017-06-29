@@ -13,9 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainAdmin4 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Spinner spinnerday, spinnermonth,spinneryear;
+    Spinner spinnertoday, spinnertomonth,spinnertoyear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,47 @@ public class MainAdmin4 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        ///////////////////Spinner date///////////////////////////////
+        spinnerday = (Spinner) findViewById(R.id.spinner_day);
+        final String[] day = getResources().getStringArray(R.array.day_arrays);
+        ArrayAdapter<String> adapterday = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,day);
+        spinnerday.setAdapter(adapterday);
+
+        spinnermonth = (Spinner) findViewById(R.id.spinner_month);
+        final String[] mount = getResources().getStringArray(R.array.month_arrays);
+        ArrayAdapter<String> adaptermount = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,mount);
+        spinnermonth.setAdapter(adaptermount);
+
+        spinneryear = (Spinner) findViewById(R.id.spinner_year);
+        final String[] year = getResources().getStringArray(R.array.year_arrays);
+        ArrayAdapter<String> adapteryear = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,year);
+        spinneryear.setAdapter(adapteryear);
+
+        ////////////////////////dath to day///////////////////
+
+        spinnertoday = (Spinner) findViewById(R.id.spinner_today);
+        final String[] today = getResources().getStringArray(R.array.day_arrays);
+        ArrayAdapter<String> adaptertoday = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,today);
+        spinnertoday.setAdapter(adaptertoday);
+
+        spinnertomonth = (Spinner) findViewById(R.id.spinner_tomonth);
+        final String[] tomount = getResources().getStringArray(R.array.month_arrays);
+        ArrayAdapter<String> adaptertomonth = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,tomount);
+        spinnertomonth.setAdapter(adaptertomonth);
+
+        spinnertoyear = (Spinner) findViewById(R.id.spinner_toyear);
+        final String[] toyear = getResources().getStringArray(R.array.year_arrays);
+        ArrayAdapter<String> adaptertoyear = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,toyear);
+        spinnertoyear.setAdapter(adaptertoyear);
+
     }
 
     @Override
@@ -81,26 +127,29 @@ public class MainAdmin4 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(MainAdmin4.this,MainAdmin1.class);
+        if (id == R.id.nav_index) {
+            Intent intent = new Intent(MainAdmin4.this,MainAdmin.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_slideshow) {
-            Intent intent = new Intent(MainAdmin4.this,MainAdmin2.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_manage) {
+        }else if (id == R.id.nav_reduce) {
             Intent intent = new Intent(MainAdmin4.this,MainAdmin3.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_static) {
+        } else if (id == R.id.nav_staticyou) {
             Intent intent = new Intent(MainAdmin4.this,MainAdmin4.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_staticall) {
+            Intent intent = new Intent(MainAdmin4.this,MainAdmin1.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_search) {
+            Intent intent = new Intent(MainAdmin4.this,MainAdmin2.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
             Intent intent = new Intent(MainAdmin4.this,MainActivity.class);
             startActivity(intent);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
