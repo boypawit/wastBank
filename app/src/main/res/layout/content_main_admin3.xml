@@ -8,24 +8,34 @@
     tools:context="com.example.boyvi.wastbank.MainAdmin3"
     tools:showIn="@layout/app_bar_main_admin3">
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="66dp"
-        android:layout_height="40dp"
+    <RadioGroup
+        android:layout_width="285dp"
+        android:layout_height="115dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:gravity="top|center_horizontal"
-        android:ems="10"
-        android:inputType="number"
-        android:text=""
-        app:layout_constraintHorizontal_bias="0.562"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.643" />
+        app:layout_constraintVertical_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.506">
+
+
+        <RadioButton
+            android:id="@+id/radioButton12"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="161dp"
+            android:layout_height="match_parent"
+            android:text="" />
+    </RadioGroup>
 
     <ImageView
         android:id="@+id/imageGlass"
@@ -40,7 +50,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43"
+        app:layout_constraintVertical_bias="0.483"
         app:srcCompat="@drawable/glass1" />
 
     <ImageView
@@ -52,12 +62,31 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453"
+        app:layout_constraintVertical_bias="0.463"
         app:srcCompat="@drawable/bottle1" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="top|center_horizontal"
+        android:inputType="number"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
 
     <TextView
         android:id="@+id/textView63"
@@ -165,8 +194,8 @@
         app:layout_constraintLeft_toLeftOf="@+id/imageGlass"
         app:layout_constraintRight_toLeftOf="@+id/imageBottle"
         app:layout_constraintTop_toTopOf="@+id/imageGlass"
-        android:layout_marginTop="119dp"
-        app:layout_constraintHorizontal_bias="0.49" />
+        android:layout_marginTop="108dp"
+        app:layout_constraintHorizontal_bias="0.265" />
 
     <TextView
         android:id="@+id/textView74"
@@ -174,11 +203,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="119dp"
+        android:layout_marginTop="108dp"
         android:text="ลดขวด"
-        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintLeft_toLeftOf="@+id/imageBottle"
         app:layout_constraintRight_toRightOf="@+id/imageBottle"
-        app:layout_constraintTop_toTopOf="@+id/imageBottle" />
+        app:layout_constraintTop_toTopOf="@+id/imageBottle"
+        app:layout_constraintHorizontal_bias="0.437" />
 
 </android.support.constraint.ConstraintLayout>

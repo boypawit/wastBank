@@ -30,7 +30,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.017"
-        app:layout_constraintHorizontal_bias="0.503" />
+        app:layout_constraintHorizontal_bias="0.503"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -48,7 +50,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
-        app:srcCompat="@drawable/ic_add_a_photo" />
+        app:srcCompat="@drawable/ic_add_a_photo"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -67,7 +71,9 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.644"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -86,7 +92,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintVertical_bias="0.653"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/button4"
@@ -106,7 +114,8 @@
         app:layout_constraintVertical_bias="0.841"
         app:layout_constraintHorizontal_bias="0.502"
         android:background="@color/colorButton"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/editText5"
@@ -124,24 +133,59 @@
         app:layout_constraintVertical_bias="0.642"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="163dp" />
+
+
+    <RadioGroup
+        android:layout_width="299dp"
+        android:layout_height="111dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
+        tools:layout_editor_absoluteY="56dp"
+        tools:layout_editor_absoluteX="43dp">
+
+
+        <RadioButton
+            android:id="@+id/radioButton12"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.34"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="163dp"
+            android:layout_height="match_parent"
+            android:text="" />
+    </RadioGroup>
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="105dp"
         android:layout_height="102dp"
-        app:srcCompat="@drawable/bottle1"
-        android:layout_marginLeft="196dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="302dp"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="196dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="196dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.384"
-        tools:layout_editor_absoluteY="67dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424"
+        app:srcCompat="@drawable/bottle1" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -154,12 +198,12 @@
         android:layout_marginBottom="302dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.384"
-        tools:layout_editor_absoluteY="67dp"
-        tools:layout_editor_absoluteX="70dp" />
+        app:layout_constraintVertical_bias="0.424"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView75"
@@ -168,11 +212,13 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="ลดแก้ว"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintLeft_toLeftOf="@+id/imageView11"
         app:layout_constraintRight_toRightOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
-        android:layout_marginTop="119dp" />
+        android:layout_marginTop="102dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView76"
@@ -180,11 +226,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="119dp"
+        android:layout_marginTop="102dp"
         android:text="ลดขวด"
-        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintLeft_toLeftOf="@+id/imageView10"
         app:layout_constraintRight_toRightOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintTop_toTopOf="@+id/imageView10"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>
