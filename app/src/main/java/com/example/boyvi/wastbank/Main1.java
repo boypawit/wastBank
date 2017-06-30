@@ -40,7 +40,7 @@ public class Main1 extends AppCompatActivity
         builder.setTitle("                      รู้หรือไม่?");
         builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
                         "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-        builder.setNegativeButton("ตกลง", null);
+        builder.setPositiveButton("ตกลง", null);
         builder.show();
 
          /*

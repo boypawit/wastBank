@@ -1,10 +1,12 @@
 package com.example.boyvi.wastbank;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainAdmin3 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +30,8 @@ public class MainAdmin3 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        ///////Edit by pawit//////////
         ImageButton buttonCountry = (ImageButton) findViewById(R.id.imageButton);
         buttonCountry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +41,37 @@ public class MainAdmin3 extends AppCompatActivity
                         , "Take a picture with"), 0);
             }
         });
+
+
+
+        Button button = (Button) findViewById(R.id.button_save);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                   /* String fake = "Invalid Username or Password";
+                    Toast.makeText(Main2.this,fake,Toast.LENGTH_LONG).show();*/
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(MainAdmin3.this);
+                builder.setMessage("คุณต้อการจะบันทึกข้อมูลทั้งหมดหรือไม่?");
+                builder.setPositiveButton("บันทึก", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(getApplicationContext(),
+                                "บันทึกเสร็จสิ้น", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("ไม่บันทึก", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.dismiss();
+                    }
+                });
+                builder.show();
+
+            }
+        });
+
+        //////////////end////////////////
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
