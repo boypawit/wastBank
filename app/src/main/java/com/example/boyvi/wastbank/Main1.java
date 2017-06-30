@@ -16,9 +16,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Main1 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,21 @@ public class Main1 extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
-                builder.setTitle("                      รู้หรือไม่?");
-                builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
+        AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
+        builder.setTitle("                      รู้หรือไม่?");
+        builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
                         "แก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-                builder.setNegativeButton("ตกลง", null);
-                builder.show();
+        builder.setNegativeButton("ตกลง", null);
+        builder.show();
+
+        /*
+       ////////////////////ทำให้รูปภาพย่อขยาย/////////////////////
+        int i=50;
+        int j = 50;
+        ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+        imageView.getLayoutParams().width=i;
+        imageView.getLayoutParams().height=j;
+        */
 
 
 
