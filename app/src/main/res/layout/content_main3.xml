@@ -119,7 +119,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="ถึง"
-        android:textColor="@android:color/background_dark"
+        android:textColor="?android:attr/colorControlNormal"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -29,8 +29,8 @@ public class MainAdmin extends AppCompatActivity
         if(i==0){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainAdmin.this);
             builder.setTitle("                      รู้หรือไม่?");
-            builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
-                "แก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+            builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม\n" +
+                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
             builder.setNegativeButton("ตกลง", null);
             builder.show();
             i++;

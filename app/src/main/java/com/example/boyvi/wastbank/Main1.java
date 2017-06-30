@@ -1,6 +1,7 @@
 package com.example.boyvi.wastbank;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +24,8 @@ public class Main1 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,21 +35,22 @@ public class Main1 extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
         builder.setTitle("                      รู้หรือไม่?");
-        builder.setMessage("ขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม" +
-                        "แก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
+                        "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
         builder.setNegativeButton("ตกลง", null);
         builder.show();
 
-        /*
-       ////////////////////ทำให้รูปภาพย่อขยาย/////////////////////
-        int i=50;
-        int j = 50;
+         /*
+        ////////Zoom picture///////////
+        int i=500;
+        int j = 500;
         ImageView imageView = (ImageView) findViewById(R.id.imageView2);
         imageView.getLayoutParams().width=i;
         imageView.getLayoutParams().height=j;
-        */
+         */
 
 
 
@@ -121,4 +125,5 @@ public class Main1 extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
