@@ -2,9 +2,6 @@ package com.example.boyvi.wastbank;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,12 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
-public class Main3 extends AppCompatActivity
+public class Admin_StatisticsYou extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Spinner spinnerday, spinnermonth,spinneryear;
@@ -27,10 +22,9 @@ public class Main3 extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main_admin4);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,7 +35,8 @@ public class Main3 extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-      ///////////////////Spinner date///////////////////////////////
+
+        ///////////////////Spinner date///////////////////////////////
         spinnerday = (Spinner) findViewById(R.id.spinner_day);
         final String[] day = getResources().getStringArray(R.array.day_arrays);
         ArrayAdapter<String> adapterday = new ArrayAdapter<String>(this,
@@ -95,7 +90,7 @@ public class Main3 extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main3, menu);
+        getMenuInflater().inflate(R.menu.main_admin4, menu);
         return true;
     }
 
@@ -120,23 +115,30 @@ public class Main3 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_Main) {
-            // Handle the camera action
-            Intent intent = new Intent(Main3.this,Main1.class);
-            startActivity(intent);
-        }else if (id == R.id.nav_camera){
-            Intent intent = new Intent(Main3.this,Main2.class);
+        if (id == R.id.nav_index) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Admin_Main.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(Main3.this,Main3.class);
+        }else if (id == R.id.nav_reduce) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Adnin_Reduce.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
-            Intent intent = new Intent(Main3.this,MainActivity.class);
+        } else if (id == R.id.nav_staticyou) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Admin_StatisticsYou.class);
             startActivity(intent);
 
+        } else if (id == R.id.nav_staticall) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Admin_StatisticsAll.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_search) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Admin_Search.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(Admin_StatisticsYou.this,Login.class);
+            startActivity(intent);
         }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

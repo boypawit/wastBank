@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     EditText UserOrAdmin;
 
 
@@ -30,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
                 //User = UserOrAdmin.getText().toString();
                if(UserOrAdmin.getText().length()==4){
                // if(User==" user "){
-                Intent intent = new Intent(MainActivity.this,Main1.class);
+                Intent intent = new Intent(Login.this,User_Main.class);
                 startActivity(intent);
                }else if (UserOrAdmin.getText().length()==1){
                    String fake = "Invalid Username or Password";
-                   Toast.makeText(MainActivity.this,fake,Toast.LENGTH_LONG).show();
+                   Toast.makeText(Login.this,fake,Toast.LENGTH_LONG).show();
 
                }
 
-               else{ Intent intent = new Intent(MainActivity.this,MainAdmin.class);
+               else{ Intent intent = new Intent(Login.this,Admin_Main.class);
                 startActivity(intent);}
 
             }

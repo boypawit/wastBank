@@ -1,13 +1,8 @@
 package com.example.boyvi.wastbank;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,42 +11,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-public class Main1 extends AppCompatActivity
+public class Admin_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
-
+    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main1);
+        setContentView(R.layout.activity_main_admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(Main1.this);
-        builder.setTitle("                      รู้หรือไม่?");
-        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
-                        "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-        builder.setPositiveButton("ตกลง", null);
-        builder.show();
-
-         /*
-        ////////Zoom picture///////////
-        int i=500;
-        int j = 500;
-        ImageView imageView = (ImageView) findViewById(R.id.imageView2);
-        imageView.getLayoutParams().width=i;
-        imageView.getLayoutParams().height=j;
-         */
-
+        if(i==0){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Admin_Main.this);
+            builder.setTitle("                      รู้หรือไม่?");
+            builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม\n" +
+                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+            builder.setNegativeButton("ตกลง", null);
+            builder.show();
+            i++;
+         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -77,7 +56,7 @@ public class Main1 extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main1, menu);
+        getMenuInflater().inflate(R.menu.main_admin, menu);
         return true;
     }
 
@@ -99,31 +78,34 @@ public class Main1 extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view item clicks here.nav_main
         int id = item.getItemId();
 
-        if (id == R.id.nav_Main) {
-            // ยังไม่ได้ส่งอะไรไป
-            Intent intent = new Intent(Main1.this,Main1.class);
-            startActivity(intent);
-            // Handle the camera action
-        }else if (id == R.id.nav_camera){
-            Intent intent = new Intent(Main1.this,Main2.class);
+        if (id == R.id.nav_index) {
+            Intent intent = new Intent(Admin_Main.this,Admin_Main.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(Main1.this,Main3.class);
+        }else if (id == R.id.nav_reduce) {
+            Intent intent = new Intent(Admin_Main.this,Adnin_Reduce.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
-            Intent intent = new Intent(Main1.this,MainActivity.class);
+        } else if (id == R.id.nav_staticyou) {
+            Intent intent = new Intent(Admin_Main.this,Admin_StatisticsYou.class);
             startActivity(intent);
 
+        } else if (id == R.id.nav_staticall) {
+            Intent intent = new Intent(Admin_Main.this,Admin_StatisticsAll.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_search) {
+            Intent intent = new Intent(Admin_Main.this,Admin_Search.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(Admin_Main.this,Login.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

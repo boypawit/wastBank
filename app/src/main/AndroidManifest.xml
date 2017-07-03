@@ -4,12 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_staticyou"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,35 +17,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main1"
+            android:name=".User_Main"
             android:label="@string/title_activity_main1"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Main2"
+            android:name=".User_reduce"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main3"
+            android:name=".User_Statistics"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainAdmin"
+            android:name=".Admin_Main"
             android:label="@string/title_activity_main_admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainAdmin1"
+            android:name=".Admin_StatisticsAll"
             android:label="@string/title_activity_main_admin1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainAdmin2"
+            android:name=".Admin_Search"
             android:label="@string/title_activity_main_admin2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".MainAdmin3"
+            android:name=".Adnin_Reduce"
             android:label="@string/title_activity_main_admin3"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".MainAdmin4"
+            android:name=".Admin_StatisticsYou"
             android:label="@string/title_activity_main_admin4"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

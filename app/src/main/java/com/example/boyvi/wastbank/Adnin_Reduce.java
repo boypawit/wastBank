@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,7 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class MainAdmin3 extends AppCompatActivity
+public class Adnin_Reduce extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -49,10 +47,10 @@ public class MainAdmin3 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                    /* String fake = "Invalid Username or Password";
-                    Toast.makeText(Main2.this,fake,Toast.LENGTH_LONG).show();*/
+                    Toast.makeText(User_reduce.this,fake,Toast.LENGTH_LONG).show();*/
 
                 AlertDialog.Builder builder =
-                        new AlertDialog.Builder(MainAdmin3.this);
+                        new AlertDialog.Builder(Adnin_Reduce.this);
                 builder.setMessage("คุณต้อการจะบันทึกข้อมูลทั้งหมดหรือไม่?");
                 builder.setPositiveButton("บันทึก", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -124,25 +122,25 @@ public class MainAdmin3 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_index) {
-            Intent intent = new Intent(MainAdmin3.this,MainAdmin.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Admin_Main.class);
             startActivity(intent);
 
         }else if (id == R.id.nav_reduce) {
-            Intent intent = new Intent(MainAdmin3.this,MainAdmin3.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Adnin_Reduce.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_staticyou) {
-            Intent intent = new Intent(MainAdmin3.this,MainAdmin4.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Admin_StatisticsYou.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_staticall) {
-            Intent intent = new Intent(MainAdmin3.this,MainAdmin1.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Admin_StatisticsAll.class);
             startActivity(intent);
         } else if (id == R.id.nav_search) {
-            Intent intent = new Intent(MainAdmin3.this,MainAdmin2.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Admin_Search.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout) {
-            Intent intent = new Intent(MainAdmin3.this,MainActivity.class);
+            Intent intent = new Intent(Adnin_Reduce.this,Login.class);
             startActivity(intent);
         }
 

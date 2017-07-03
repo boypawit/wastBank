@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.boyvi.wastbank.MainActivity">
+    tools:context="com.example.boyvi.wastbank.Login">
 
     <EditText
         android:id="@+id/editText"
@@ -83,24 +83,24 @@
 
     <Button
         android:id="@+id/fogotbutton"
-        android:layout_width="109dp"
-        android:layout_height="27dp"
+        android:layout_width="129dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
+        android:background="@color/colorwite"
         android:text="ลืมรหัสผ่าน?"
-        android:textAllCaps="false"
         android:textColor="@color/colorBlue"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.835" />
+        app:layout_constraintVertical_bias="0.86"
+        tools:layout_editor_absoluteY="413dp"
+        tools:layout_editor_absoluteX="140dp" />
 
 
 

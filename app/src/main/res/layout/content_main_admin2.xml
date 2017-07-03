@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.boyvi.wastbank.MainAdmin2"
+    tools:context="com.example.boyvi.wastbank.Admin_Search"
     tools:showIn="@layout/app_bar_main_admin2">
 
     <TextView

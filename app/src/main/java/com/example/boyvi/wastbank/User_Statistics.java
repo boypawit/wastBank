@@ -1,13 +1,7 @@
 package com.example.boyvi.wastbank;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,51 +10,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-public class Main2 extends AppCompatActivity
+public class User_Statistics extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Spinner spinnerday, spinnermonth,spinneryear;
+    Spinner spinnertoday, spinnertomonth,spinnertoyear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        ///////Edit by pawit//////////
-
-        Button buttonCountry = (Button) findViewById(R.id.button_save);
-        buttonCountry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                   /* String fake = "Invalid Username or Password";
-                    Toast.makeText(Main2.this,fake,Toast.LENGTH_LONG).show();*/
-
-                AlertDialog.Builder builder =
-                        new AlertDialog.Builder(Main2.this);
-                builder.setMessage("คุณต้อการจะบันทึกข้อมูลทั้งหมดหรือไม่?");
-                builder.setPositiveButton("บันทึก", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getApplicationContext(),
-                                "บันทึกเสร็จสิ้น", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.setNegativeButton("ไม่บันทึก", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //dialog.dismiss();
-                    }
-                });
-                builder.show();
-
-            }
-        });
-
-        //////////////end////////////////
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,22 +36,44 @@ public class Main2 extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton buttoncamera = (ImageButton) findViewById(R.id.imageButton2);
-        buttoncamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(Intent.createChooser(intent
-                        , "Take a picture with"), 0);
-            }
-        });
+      ///////////////////Spinner date///////////////////////////////
+        spinnerday = (Spinner) findViewById(R.id.spinner_day);
+        final String[] day = getResources().getStringArray(R.array.day_arrays);
+        ArrayAdapter<String> adapterday = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,day);
+        spinnerday.setAdapter(adapterday);
 
+        spinnermonth = (Spinner) findViewById(R.id.spinner_month);
+        final String[] mount = getResources().getStringArray(R.array.month_arrays);
+        ArrayAdapter<String> adaptermount = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,mount);
+        spinnermonth.setAdapter(adaptermount);
 
+        spinneryear = (Spinner) findViewById(R.id.spinner_year);
+        final String[] year = getResources().getStringArray(R.array.year_arrays);
+        ArrayAdapter<String> adapteryear = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,year);
+        spinneryear.setAdapter(adapteryear);
 
+        ////////////////////////dath to day///////////////////
 
+        spinnertoday = (Spinner) findViewById(R.id.spinner_today);
+        final String[] today = getResources().getStringArray(R.array.day_arrays);
+        ArrayAdapter<String> adaptertoday = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,today);
+        spinnertoday.setAdapter(adaptertoday);
 
+        spinnertomonth = (Spinner) findViewById(R.id.spinner_tomonth);
+        final String[] tomount = getResources().getStringArray(R.array.month_arrays);
+        ArrayAdapter<String> adaptertomonth = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,tomount);
+        spinnertomonth.setAdapter(adaptertomonth);
 
-
+        spinnertoyear = (Spinner) findViewById(R.id.spinner_toyear);
+        final String[] toyear = getResources().getStringArray(R.array.year_arrays);
+        ArrayAdapter<String> adaptertoyear = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,toyear);
+        spinnertoyear.setAdapter(adaptertoyear);
 
     }
 
@@ -104,7 +90,7 @@ public class Main2 extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
+        getMenuInflater().inflate(R.menu.main3, menu);
         return true;
     }
 
@@ -131,25 +117,23 @@ public class Main2 extends AppCompatActivity
 
         if (id == R.id.nav_Main) {
             // Handle the camera action
-            Intent intent = new Intent(Main2.this,Main1.class);
+            Intent intent = new Intent(User_Statistics.this,User_Main.class);
             startActivity(intent);
         }else if (id == R.id.nav_camera){
-            Intent intent = new Intent(Main2.this,Main2.class);
+            Intent intent = new Intent(User_Statistics.this,User_reduce.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(Main2.this,Main3.class);
+            Intent intent = new Intent(User_Statistics.this,User_Statistics.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
-            Intent intent = new Intent(Main2.this,MainActivity.class);
+            Intent intent = new Intent(User_Statistics.this,Login.class);
             startActivity(intent);
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

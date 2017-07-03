@@ -2,9 +2,6 @@ package com.example.boyvi.wastbank;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,10 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
-public class MainAdmin1 extends AppCompatActivity
+public class Admin_StatisticsAll extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Spinner spinnerday, spinnermonth,spinneryear;
@@ -122,25 +118,25 @@ public class MainAdmin1 extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_index) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Admin_Main.class);
             startActivity(intent);
 
         }else if (id == R.id.nav_reduce) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin3.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Adnin_Reduce.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_staticyou) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin4.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Admin_StatisticsYou.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_staticall) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin1.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Admin_StatisticsAll.class);
             startActivity(intent);
         } else if (id == R.id.nav_search) {
-            Intent intent = new Intent(MainAdmin1.this,MainAdmin2.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Admin_Search.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout) {
-            Intent intent = new Intent(MainAdmin1.this,MainActivity.class);
+            Intent intent = new Intent(Admin_StatisticsAll.this,Login.class);
             startActivity(intent);
         }
 
