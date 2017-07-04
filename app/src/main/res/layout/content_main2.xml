@@ -10,6 +10,63 @@
 
     >
 
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="top|center_horizontal"
+        android:inputType="number"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ลดค่าใช้จ่าย "
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.291"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="46dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="บาท"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.653" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -25,13 +82,11 @@
         android:textStyle="bold"
         android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"
-        app:layout_constraintHorizontal_bias="0.503"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.017" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -50,48 +105,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/ic_add_a_photo"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ลดค่าใช้จ่าย "
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintVertical_bias="0.644"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="46dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="บาท"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -115,30 +128,42 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="57dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:gravity="top|center_horizontal"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="115dp"
+        android:layout_height="108dp"
+        app:srcCompat="@drawable/bottle1"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="163dp"
+        android:layout_marginBottom="345dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.642"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="163dp" />
+        app:layout_constraintHorizontal_bias="0.249"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.6" />
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="115dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="345dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/glass2" />
 
     <RadioGroup
-        android:layout_width="299dp"
-        android:layout_height="111dp"
+        android:layout_width="293dp"
+        android:layout_height="91dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -148,9 +173,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        tools:layout_editor_absoluteY="56dp"
-        tools:layout_editor_absoluteX="43dp">
+        app:layout_constraintVertical_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.506">
 
 
         <RadioButton
@@ -162,73 +186,9 @@
 
         <RadioButton
             android:id="@+id/radioButton11"
-            android:layout_width="163dp"
+            android:layout_width="151dp"
             android:layout_height="match_parent"
             android:text="" />
     </RadioGroup>
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="105dp"
-        android:layout_height="102dp"
-        android:layout_marginBottom="302dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="196dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424"
-        app:srcCompat="@drawable/bottle1" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="103dp"
-        android:layout_height="102dp"
-        app:srcCompat="@drawable/glass1"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="302dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.424"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="ลดแก้ว"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView11"
-        app:layout_constraintRight_toRightOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        android:layout_marginTop="102dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView76"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="102dp"
-        android:text="ลดขวด"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView10"
-        app:layout_constraintRight_toRightOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
 </android.support.constraint.ConstraintLayout>

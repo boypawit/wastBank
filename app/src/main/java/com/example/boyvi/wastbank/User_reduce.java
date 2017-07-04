@@ -51,6 +51,7 @@ public class User_reduce extends AppCompatActivity
                         , "Take a picture with"), 0);
             }
         });
+
         Button button = (Button) findViewById(R.id.button_save);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
