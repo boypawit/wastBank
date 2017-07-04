@@ -19,6 +19,9 @@ public class Login extends AppCompatActivity {
 
          UserOrAdmin = (EditText)this.findViewById(R.id.editText);
 
+        getSupportActionBar().setIcon(R.mipmap.ic_toolbars);
+        getSupportActionBar().setTitle("24Hours Waste Bank");
+
 
 
         Button buttonCountry = (Button) findViewById(R.id.Loginbutton);
@@ -39,6 +42,7 @@ public class Login extends AppCompatActivity {
 
                else{ Intent intent = new Intent(Login.this,Admin_Main.class);
                 startActivity(intent);}
+                finish();
 
             }
         });

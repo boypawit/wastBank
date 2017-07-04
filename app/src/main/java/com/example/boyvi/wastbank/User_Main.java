@@ -28,6 +28,11 @@ public class User_Main extends AppCompatActivity
 
 
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
+        getSupportActionBar().setTitle("24Hrs Waste Bank");
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(User_Main.this);
         builder.setTitle("                      รู้หรือไม่?");
         builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
