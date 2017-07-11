@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class User_reduce extends AppCompatActivity
@@ -78,6 +79,29 @@ public class User_reduce extends AppCompatActivity
 
             }
         });
+
+
+
+        final ImageView Demo_button = (ImageView )findViewById(R.id.imageView6);
+        final ImageView second_button = (ImageView )findViewById(R.id.imageView7);
+
+// when you click this demo button
+        Demo_button.setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick(View v) {
+
+                        Demo_button.setImageResource(R.drawable.glass);
+                        second_button.setImageResource(R.drawable.bottle1);
+                                           }
+                                       });
+
+                second_button.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+
+                        Demo_button.setImageResource(R.drawable.glass1);
+                        second_button.setImageResource(R.drawable.water);
+                                                     }
+                                                 });
         //////////////end////////////////
 
 

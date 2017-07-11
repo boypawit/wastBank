@@ -26,8 +26,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintHorizontal_bias="0.503" />
 
     <EditText
         android:id="@+id/editText2"
@@ -46,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.637" />
 
     <TextView
         android:id="@+id/textView2"
@@ -67,14 +66,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.287" />
+        app:layout_constraintVertical_bias="0.334" />
 
     <Button
         android:id="@+id/Loginbutton"
         android:layout_width="122dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="138dp"
+        android:layout_marginLeft="131dp"
         android:layout_marginTop="8dp"
         android:text="เข้าสู่ระบบ"
         android:textSize="18sp"
@@ -83,29 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
-
-    <Button
-        android:id="@+id/fogotbutton"
-        android:layout_width="129dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorwite"
-        android:text="ลืมรหัสผ่าน?"
-        android:textColor="@color/colorBlue"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86"
-        tools:layout_editor_absoluteY="413dp"
-        tools:layout_editor_absoluteX="140dp" />
-
+        app:layout_constraintVertical_bias="0.785" />
 
 
     <ImageView
