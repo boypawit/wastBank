@@ -82,15 +82,15 @@ public class User_reduce extends AppCompatActivity
 
 
 
-        final ImageView Demo_button = (ImageView )findViewById(R.id.imageView6);
-        final ImageView second_button = (ImageView )findViewById(R.id.imageView7);
+        final ImageView Demo_button = (ImageView )findViewById(R.id.imgGlass);
+        final ImageView second_button = (ImageView )findViewById(R.id.imgBut);
 
 // when you click this demo button
         Demo_button.setOnClickListener(new View.OnClickListener() {
 
                     public void onClick(View v) {
 
-                        Demo_button.setImageResource(R.drawable.glass);
+                        Demo_button.setImageResource(R.drawable.glass_stroke);
                         second_button.setImageResource(R.drawable.bottle1);
                                            }
                                        });
@@ -98,8 +98,8 @@ public class User_reduce extends AppCompatActivity
                 second_button.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
-                        Demo_button.setImageResource(R.drawable.glass1);
-                        second_button.setImageResource(R.drawable.water);
+                        Demo_button.setImageResource(R.drawable.glass2);
+                        second_button.setImageResource(R.drawable.bottle_stroke);
                                                      }
                                                  });
         //////////////end////////////////

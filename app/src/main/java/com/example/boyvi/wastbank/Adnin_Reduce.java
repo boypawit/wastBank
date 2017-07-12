@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Adnin_Reduce extends AppCompatActivity
@@ -66,6 +67,28 @@ public class Adnin_Reduce extends AppCompatActivity
                 });
                 builder.show();
 
+            }
+        });
+
+
+        final ImageView Demo_button = (ImageView )findViewById(R.id.imageGlass);
+        final ImageView second_button = (ImageView )findViewById(R.id.imageBottle);
+
+// when you click this demo button
+        Demo_button.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Demo_button.setImageResource(R.drawable.glass_stroke);
+                second_button.setImageResource(R.drawable.bottle1);
+            }
+        });
+
+        second_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Demo_button.setImageResource(R.drawable.glass2);
+                second_button.setImageResource(R.drawable.bottle_stroke);
             }
         });
 

@@ -349,87 +349,87 @@
 
     <Spinner
         android:id="@+id/spinner_day"
-        android:layout_width="67dp"
-        android:layout_height="31dp"
+        android:layout_width="83dp"
+        android:layout_height="33dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <Spinner
         android:id="@+id/spinner_month"
-        android:layout_width="126dp"
-        android:layout_height="31dp"
+        android:layout_width="139dp"
+        android:layout_height="33dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="129dp"
+        android:layout_marginLeft="115dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <Spinner
         android:id="@+id/spinner_year"
-        android:layout_width="78dp"
-        android:layout_height="31dp"
+        android:layout_width="102dp"
+        android:layout_height="34dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintHorizontal_bias="0.924"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <Spinner
         android:id="@+id/spinner_today"
-        android:layout_width="65dp"
-        android:layout_height="32dp"
+        android:layout_width="87dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Spinner
         android:id="@+id/spinner_tomonth"
-        android:layout_width="127dp"
-        android:layout_height="33dp"
+        android:layout_width="138dp"
+        android:layout_height="35dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="129dp"
+        android:layout_marginLeft="116dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintVertical_bias="0.223" />
 
     <Spinner
         android:id="@+id/spinner_toyear"
-        android:layout_width="80dp"
-        android:layout_height="33dp"
+        android:layout_width="108dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/button7"
