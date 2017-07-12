@@ -81,7 +81,7 @@
         android:ems="10"
         android:gravity="top|center_horizontal"
         android:inputType="number"
-        android:text=""
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintLeft_toLeftOf="parent"

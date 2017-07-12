@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 public class Admin_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    int i;
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,15 +22,7 @@ public class Admin_Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(i==0){
-            AlertDialog.Builder builder = new AlertDialog.Builder(Admin_Main.this);
-            builder.setTitle("                      รู้หรือไม่?");
-            builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม\n" +
-                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-            builder.setNegativeButton("ตกลง", null);
-            builder.show();
-            i++;
-         }
+        if(i==0)  aleatDetail();i++;
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,5 +99,15 @@ public class Admin_Main extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void aleatDetail(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(Admin_Main.this);
+        builder.setTitle("                      รู้หรือไม่?");
+        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม\n" +
+                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+        builder.setNegativeButton("ตกลง", null);
+        builder.show();
+
     }
 }

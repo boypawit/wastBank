@@ -25,20 +25,13 @@ public class User_Main extends AppCompatActivity
         setContentView(R.layout.activity_main1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        aleatDetail();
 
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
         getSupportActionBar().setTitle("24Hrs Waste Bank");
 
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(User_Main.this);
-        builder.setTitle("                      รู้หรือไม่?");
-        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
-                        "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-        builder.setPositiveButton("ตกลง", null);
-        builder.show();
 
          /*
         ////////Zoom picture///////////
@@ -121,6 +114,17 @@ public class User_Main extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void aleatDetail(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(User_Main.this);
+        builder.setTitle("                      รู้หรือไม่?");
+        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
+                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+        builder.setPositiveButton("ตกลง", null);
+        builder.show();
+
+
     }
 
 }
