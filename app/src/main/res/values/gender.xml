@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gender_arrays">//item ที่จะเอาไปใช้ใน spiner
+    <item>รหัสนักศึกษา</item>
+    <item>ชื่อ-สกุล</item>
+    </string-array>
+
+</resources>

@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class Admin_Search extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +31,14 @@ public class Admin_Search extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        ///////////////////gender spinner/////////////
+        Spinner spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
+        final String[] gender = getResources().getStringArray(R.array.gender_arrays);
+        ArrayAdapter<String> adaptertoday = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,gender);
+        spinnerGender.setAdapter(adaptertoday);
     }
 
     @Override

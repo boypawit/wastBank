@@ -33,7 +33,7 @@ public class User_Main extends AppCompatActivity
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
         getSupportActionBar().setTitle("24Hrs Waste Bank");
-        
+
 
 
          /*
