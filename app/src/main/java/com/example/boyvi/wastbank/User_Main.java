@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class User_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +35,12 @@ public class User_Main extends AppCompatActivity
         getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
         getSupportActionBar().setTitle("24Hrs Waste Bank");
 
+       /* Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        String user = intent.getStringExtra("username");
+
+        TextView textUsername = (TextView) findViewById(R.id.username);
+        textUsername.setText(user);
 
 
          /*
