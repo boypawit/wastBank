@@ -46,7 +46,7 @@ public class User_Main extends AppCompatActivity
          /*
         ////////Zoom picture///////////
         int i=500;
-        int j = 500;
+        int j = 500;   //if
         ImageView imageView = (ImageView) findViewById(R.id.imageView2);
         imageView.getLayoutParams().width=i;
         imageView.getLayoutParams().height=j;

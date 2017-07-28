@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,55 +39,27 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
-    private String TAG = Login.class.getSimpleName();
-    private Map<String, String> params;
-    private EditText editusername , editpassword ;
-    private TextView textviewShow ;
-    private Button button ;
-    private static final String URL = "https://boyvinai.000webhostapp.com/test.php";
-    private String username,password ;
+    private ListView jsjonLisview;
+    private ArrayList<String> exData;
+    private ProgressDialog progressDialog;
+    private String user,pass;
+    private String loginState;
+
     private ProgressDialog prg ;
+    private String TAG = Login.class.getSimpleName();
+    private EditText editemail,editpassword ;
+    private String email,password ;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        findViewID();
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                prg = new ProgressDialog(Login.this);
-                prg.setMessage("Wait...");
-                prg.setCancelable(false);
-                prg.show();
-                Set();
-                click();
-
-
-
-
-            }
-        });
+    public void findID(){
+        editemail = (EditText) this.findViewById(R.id.editText);
+        editpassword = (EditText) this.findViewById(R.id.Edit_password);
     }
-
-
-    private void findViewID(){
-
-        editusername = (EditText) findViewById(R.id.editText);
-        editpassword = (EditText) findViewById(R.id.Edit_password);
-        button = (Button) findViewById(R.id.Loginbutton);
-        textviewShow = (TextView) findViewById(R.id.textView2);
+    public  void  set(){
+        email = editemail.getText().toString();
+        password = editpassword.getText().toString();
     }
-
-    private void Set(){
-        username = editusername.getText().toString();
-        password= editpassword.getText().toString();
-    }
-
     private void click (){
-        if (!username.isEmpty() && !password.isEmpty()){
+        if (!email.isEmpty() && !password.isEmpty()){
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
             urlJsonObj, null, new Response.Listener<JSONObject>() */
@@ -96,50 +67,31 @@ public class Login extends AppCompatActivity {
 
                 //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,null,new Response.Listener<JSONObject>(){
                 @Override
-                public void onResponse(String response) {///// respose ค่าที่ส่งไปกลับมา
+                public void onResponse(String response) {
                     Log.d(TAG,response.toString());
                     try{
 
                         prg.hide();
-                        editusername.setText("");
+                        editemail.setText("");
                         editpassword.setText("");
                         JSONObject j= new JSONObject(response.toString());
                         //   JSONObject j = response.getJSONObject("dataUser");
-                        //   String userID = j.getString("id");
+                        String userID = j.getString("id");
                         // j.getJSONObject("dataUser");
 
-                        String id  = j.getString("id");
-                        String permiss  = j.getString("permis").toString();
-                        String user = j.getString("user");
+                        String email  = j.getString("email");
+                        String password = j.getString("password");
                         //  textviewShow.setText("OK" +email+password);
-                        int test = Integer.parseInt(permiss);
-                        textviewShow.setText("OK" +id+ permiss+user+test);
-
-                        if (test==0){
-                            Intent intent = new Intent(Login.this,User_Main.class);
-                            intent.putExtra("id",id);
-                            intent.putExtra("username",user);
-                            startActivity(intent);
-
-
-                        }
-                        else if(test==1){
-                            Intent intent = new Intent(Login.this,Admin_Main.class);
-                            intent.putExtra("id",id);
-                            intent.putExtra("username",user);
-                            startActivity(intent);
-                        }
-
-
-
+                        //textviewShow.setText("OK" + " "+userID + "  "+ email+"  "+password);
+                        Intent intent = new Intent();
+                        startActivity();
                     }catch (JSONException e){
                         prg.hide();
                         //  textviewShow.setText(e.getMessage());
                         //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                         Log.d("Whats wrong?", e.toString());
                         Log.e("JSON Parser", "Error parsing data " + e.toString());
-                        //textviewShow.setText(e.toString());
-                        textviewShow.setText("รหัสผิด");
+                        textviewShow.setText(e.toString());
                     }
                 }
             }, new Response.ErrorListener() {
@@ -148,8 +100,7 @@ public class Login extends AppCompatActivity {
                     VolleyLog.d(TAG,error.toString());
                     //  textviewShow.setText("Error");
                     prg.hide();
-                    //textviewShow.setText(error.toString());
-                    textviewShow.setText("No connect Internet");
+                    textviewShow.setText(error.toString());
 
                 }
             }){
@@ -164,6 +115,28 @@ public class Login extends AppCompatActivity {
                 }
             };requestQueue.add(request);
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        findID();
+
+
+        getSupportActionBar().setIcon(R.mipmap.ic_toolbars);
+        getSupportActionBar().setTitle("24Hours Waste Bank");
+
+
+        Button loginBtn = (Button) findViewById(R.id.Loginbutton);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                set();
+
+            }
+        });
     }
 }
 
