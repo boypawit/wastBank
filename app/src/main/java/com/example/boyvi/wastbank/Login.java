@@ -1,7 +1,9 @@
 package com.example.boyvi.wastbank;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,12 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -38,10 +35,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
-
-    private ListView jsjonLisview;
-    private ArrayList<String> exData;
-    private ProgressDialog progressDialog;
+    private static final String Pref = "PrefWasteBank";
+    private String id,name,glass,bottle,paysave ;
+    SharedPreferences share ;
+    SharedPreferences.Editor editor;
+    private static final String URL = "https://notenonthawat.000webhostapp.com/login.php";
     private String user,pass;
     private String loginState;
 
@@ -54,11 +52,14 @@ public class Login extends AppCompatActivity {
         editemail = (EditText) this.findViewById(R.id.editText);
         editpassword = (EditText) this.findViewById(R.id.Edit_password);
     }
-    public  void  set(){
+    public  void  Set(){
         email = editemail.getText().toString();
         password = editpassword.getText().toString();
     }
     private void click (){
+
+        share = getSharedPreferences(Pref, Context.MODE_PRIVATE);
+        editor = share.edit();
         if (!email.isEmpty() && !password.isEmpty()){
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
@@ -76,22 +77,112 @@ public class Login extends AppCompatActivity {
                         editpassword.setText("");
                         JSONObject j= new JSONObject(response.toString());
                         //   JSONObject j = response.getJSONObject("dataUser");
-                        String userID = j.getString("id");
-                        // j.getJSONObject("dataUser");
+                      //  String userID = j.getString("id");
+                        String status_String = j.getString("result");
+                        int status = Integer.parseInt(status_String);
+                       // String status = j.getString("result");
+                       // String Privilege = j.getString("Privilege");
+                       // Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
+                        if(status == 1){
+                            String Privilege = j.getString("Privilege");
+                            switch (Privilege) {
 
-                        String email  = j.getString("email");
-                        String password = j.getString("password");
-                        //  textviewShow.setText("OK" +email+password);
-                        //textviewShow.setText("OK" + " "+userID + "  "+ email+"  "+password);
-                        Intent intent = new Intent();
-                        startActivity();
+                                case "0" : {
+                                    Intent intent = new Intent(Login.this, Admin_Main.class);
+                                  /*  intent.putExtra("id",j.getString("id"));
+                                    intent.putExtra("name",j.getString("name"));
+                                    intent.putExtra("paysave",j.getString("paysave"));
+                                    intent.putExtra("bottle",j.getString("bottle"));
+                                    intent.putExtra("glass",j.getString("glass"));*/
+
+                                    id = j.getString("id").toString();
+                                    name = j.getString("name");
+                                    glass = j.getString("glass").toString();
+                                    bottle = j.getString("bottle");
+                                    paysave = j.getString("paysave");
+
+                                    editor.putString("id",id);
+                                    editor.putString("name",name);
+                                    editor.putString("paysave",paysave);
+                                    editor.putString("bottle",bottle);
+                                    editor.putString("glass",glass);
+                                    editor.commit();
+
+                                   /* Bundle  bundle = getIntent().getExtras();
+                                    if (bundle != null){
+
+                                    }*/
+                                    startActivity(intent);
+                                    finish();
+                                    break ;
+                                }
+
+                                case "1" : {
+                                    Intent intent = new Intent(Login.this, User_Main.class);
+                                  /*  intent.putExtra("id",j.getString("name"));
+                                    intent.putExtra("name",j.getString("name"));
+                                    intent.putExtra("paysave",j.getString("paysave"));
+                                    intent.putExtra("bottle",j.getString("bottle"));
+                                    intent.putExtra("glass",j.getString("glass"));*/
+
+                                    id = j.getString("id");
+                                    name = j.getString("name");
+                                    glass = j.getString("glass");
+                                    bottle = j.getString("bottle");
+                                    paysave = j.getString("paysave");
+
+                                    editor.putString("id",id);
+                                    editor.putString("name",name);
+                                    editor.putString("paysave",paysave);
+                                    editor.putString("bottle",bottle);
+                                    editor.putString("glass",glass);
+                                    editor.commit();
+
+                                    startActivity(intent);
+                                    finish();
+                                    break ;
+                                }
+
+                                case "2" : {
+                                    Intent intent = new Intent(Login.this, User_Main.class);
+                                 /*   intent.putExtra("id",j.getString("name"));
+                                    intent.putExtra("name",j.getString("name"));
+                                    intent.putExtra("paysave",j.getString("paysave"));
+                                    intent.putExtra("bottle",j.getString("bottle"));
+                                    intent.putExtra("glass",j.getString("glass"));*/
+                                   id = j.getString("id");
+                                    name = j.getString("name");
+                                    glass = j.getString("glass");
+                                    bottle = j.getString("bottle");
+                                    paysave = j.getString("paysave");
+
+                                    editor.putString("id",id);
+                                    editor.putString("name",name);
+                                    editor.putString("paysave",paysave);
+                                    editor.putString("bottle",bottle);
+                                    editor.putString("glass",glass);
+                                    editor.commit();
+
+                                    startActivity(intent);
+                                    finish();
+                                    break ;
+                                }
+                            }
+
+
+                        }else if(status == 2){
+                            String message = j.getString("message");
+                            Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
+                            prg.hide();
+                        }
                     }catch (JSONException e){
                         prg.hide();
                         //  textviewShow.setText(e.getMessage());
                         //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, e.toString(), Toast.LENGTH_SHORT).show();
                         Log.d("Whats wrong?", e.toString());
                         Log.e("JSON Parser", "Error parsing data " + e.toString());
-                        textviewShow.setText(e.toString());
+
                     }
                 }
             }, new Response.ErrorListener() {
@@ -100,14 +191,14 @@ public class Login extends AppCompatActivity {
                     VolleyLog.d(TAG,error.toString());
                     //  textviewShow.setText("Error");
                     prg.hide();
-                    textviewShow.setText(error.toString());
+
 
                 }
             }){
                 @Override
                 protected Map<String, String> getParams(){
                     Map<String,String> params = new HashMap<String, String>();
-                    params.put("username",username);
+                    params.put("username",email);
                     params.put("password",password);
                     return params;
 
@@ -125,6 +216,11 @@ public class Login extends AppCompatActivity {
         findID();
 
 
+       /* SharedPreferences share = getSharedPreferences(Pref, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = share.edit();*/
+
+
+
         getSupportActionBar().setIcon(R.mipmap.ic_toolbars);
         getSupportActionBar().setTitle("24Hours Waste Bank");
 
@@ -133,7 +229,13 @@ public class Login extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                set();
+
+                prg = new ProgressDialog(Login.this);
+                prg.setMessage("รอสักครู่...");
+                prg.setCancelable(false);
+                prg.show();
+                Set();
+                click();
 
             }
         });

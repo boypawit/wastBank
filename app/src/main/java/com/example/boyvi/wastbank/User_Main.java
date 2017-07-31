@@ -13,12 +13,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class User_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //private static final String Pref = "PrefWasteBank";
+    SharedPreferences share ;
 
+
+
+    private TextView glass,bottle,paysave ;
+    //private String email,password ;
+
+    public void findID(){
+        glass =  (TextView) this.findViewById(R.id.glass);
+        bottle= (TextView) this.findViewById(R.id.bottle);
+        paysave = (TextView) this.findViewById(R.id.paysave);
+    }
+    public void getsharePref(){
+
+    }
 
 
     @Override
@@ -30,6 +46,14 @@ public class User_Main extends AppCompatActivity
         setSupportActionBar(toolbar);
         aleatDetail();
 
+
+        findID();
+
+        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+
+        glass.setText(share.getString("glass","No"));
+        bottle.setText(share.getString("bottle","No"));
+        paysave.setText(share.getString("paysave","No"));
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
