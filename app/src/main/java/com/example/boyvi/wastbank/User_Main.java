@@ -11,8 +11,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,13 +26,14 @@ public class User_Main extends AppCompatActivity
 
 
 
-    private TextView glass,bottle,paysave ;
+    private TextView glass,bottle,paysave;
     //private String email,password ;
 
     public void findID(){
         glass =  (TextView) this.findViewById(R.id.glass);
         bottle= (TextView) this.findViewById(R.id.bottle);
         paysave = (TextView) this.findViewById(R.id.paysave);
+
     }
     public void getsharePref(){
 
@@ -55,6 +58,8 @@ public class User_Main extends AppCompatActivity
         bottle.setText(share.getString("bottle","No"));
         paysave.setText(share.getString("paysave","No"));
 
+
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_toolbars);
         getSupportActionBar().setTitle("24Hrs Waste Bank");
@@ -65,8 +70,7 @@ public class User_Main extends AppCompatActivity
 
         TextView textUsername = (TextView) findViewById(R.id.username);
         textUsername.setText(user);
-
-
+        
          /*
         ////////Zoom picture///////////
         int i=500;
@@ -85,7 +89,13 @@ public class User_Main extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main1);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
     }
 
     @Override
@@ -101,6 +111,7 @@ public class User_Main extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_Main) {
@@ -124,6 +135,7 @@ public class User_Main extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 

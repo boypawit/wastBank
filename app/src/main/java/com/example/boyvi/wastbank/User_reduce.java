@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -159,6 +160,10 @@ public class User_reduce extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
         ImageButton buttoncamera = (ImageButton) findViewById(R.id.imageButton2);
@@ -210,12 +215,13 @@ public class User_reduce extends AppCompatActivity
         final ImageView second_button = (ImageView )findViewById(R.id.imgBut);
 
 // when you click this demo button
-        Demo_button.setOnClickListener(new View.OnClickListener() {
+                Demo_button.setOnClickListener(new View.OnClickListener() {
 
                     public void onClick(View v) {
 
                         Demo_button.setImageResource(R.drawable.glass_stroke);
                         second_button.setImageResource(R.drawable.bottle1);
+                        Toast.makeText(User_reduce.this,"1", Toast.LENGTH_SHORT).show();
                                            }
                                        });
 
@@ -224,6 +230,7 @@ public class User_reduce extends AppCompatActivity
 
                         Demo_button.setImageResource(R.drawable.glass2);
                         second_button.setImageResource(R.drawable.bottle_stroke);
+                        Toast.makeText(User_reduce.this,"2", Toast.LENGTH_SHORT).show();
                                                      }
                                                  });
         //////////////end////////////////

@@ -23,16 +23,17 @@
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/nav_name"
+        android:layout_width="342dp"
+        android:layout_height="34dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="24 Wast Bank"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="มหาวิทยาลัยอุบลราชธานี" />
+        android:text="มหาวิทยาลัยอุบลราชธานี"
+        android:layout_weight="0.21" />
 
 </LinearLayout>

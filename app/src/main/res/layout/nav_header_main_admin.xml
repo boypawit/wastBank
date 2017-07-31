@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="44dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Admin Admin"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -33,6 +33,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="มหาวิทยาลัยอุบลราชธานี" />
+        android:text="มหาวิทยาลัยอุบลราชธานี"
+        android:layout_weight="0.12" />
 
 </LinearLayout>

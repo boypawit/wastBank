@@ -14,7 +14,6 @@ import android.view.MenuItem;
 
 public class Admin_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +21,6 @@ public class Admin_Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(i==0)  aleatDetail();i++;
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
