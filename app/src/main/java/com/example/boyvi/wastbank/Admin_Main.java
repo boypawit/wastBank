@@ -1,6 +1,8 @@
 package com.example.boyvi.wastbank;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
@@ -11,15 +13,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class Admin_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    SharedPreferences share ;
+    TextView name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        aleatDetail();
+
+
+        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
 
 
 
@@ -30,6 +40,10 @@ public class Admin_Main extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+
+        name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -85,6 +99,7 @@ public class Admin_Main extends AppCompatActivity
                 "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
         builder.setNegativeButton("ตกลง", null);
         builder.show();
+
 
     }
 }

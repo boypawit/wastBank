@@ -1,6 +1,8 @@
 package com.example.boyvi.wastbank;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,12 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class Admin_StatisticsYou extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
 
@@ -26,6 +31,8 @@ public class Admin_StatisticsYou extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -33,6 +40,9 @@ public class Admin_StatisticsYou extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin3);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
 

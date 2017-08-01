@@ -146,6 +146,12 @@ public class User_reduce extends AppCompatActivity
 
         share = getSharedPreferences("PrefWasteBank",Context.MODE_PRIVATE);
         String userID = share.getString("id","No value") ;
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
+        navigationView.setNavigationItemSelectedListener(this);
 
         findID();
 
@@ -159,12 +165,7 @@ public class User_reduce extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
-        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
-        name.setText(share.getString("name","No"));
-        navigationView.setNavigationItemSelectedListener(this);
 
         ImageButton buttoncamera = (ImageButton) findViewById(R.id.imageButton2);
         buttoncamera.setOnClickListener(new View.OnClickListener() {

@@ -1,7 +1,9 @@
 package com.example.boyvi.wastbank;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -17,10 +19,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Adnin_Reduce extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    SharedPreferences share ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +33,10 @@ public class Adnin_Reduce extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ///////Edit by pawit//////////
+        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+
+
         ImageButton buttonCountry = (ImageButton) findViewById(R.id.imageButton);
         buttonCountry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +108,9 @@ public class Adnin_Reduce extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin2);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
 
