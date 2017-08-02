@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.internal.NavigationMenuPresenter;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -43,34 +44,26 @@ public class User_reduce extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String Pref = "PrefWasteBank";
     ProgressDialog prg ;
-    private String TAG = Login.class.getSimpleName();
+    private String TAG = User_reduce.class.getSimpleName();
     private  String URL =  "https://notenonthawat.000webhostapp.com/use_reduce.php";
     private ImageView ImgGlass , ImgBottle ;
-    private String userID,type,paysave ;
-
+    private String userID,paysave ;
+    private String type = "0";
     private EditText price;
 
     SharedPreferences share ;
     SharedPreferences.Editor editor;
-
+    
     public void findID(){
-            ImgGlass = (ImageView) findViewById(R.id.imageGlass);
-          //  ImgGlass.isSelected();
-            ImgBottle = (ImageView) findViewById(R.id.imageBottle);
-
             price = (EditText) findViewById(R.id.editText5);
+
     }
 
     private void click (){
 
         paysave = price.getText().toString();
 
-        if (ImgGlass.isSelected()) {
-            type = "1" ;
-        }
-        if (ImgBottle.isSelected()){
-            type = "2" ;
-        }
+
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
@@ -83,29 +76,32 @@ public class User_reduce extends AppCompatActivity
 
                     Log.d(TAG,response.toString());
                     try{
-
-                        prg.hide();
-
                         JSONObject j= new JSONObject(response.toString());
                         //   JSONObject j = response.getJSONObject("dataUser");
                         //  String userID = j.getString("id");
                         String status_String = j.getString("result");
-
+                        //int status = Integer.parseInt(status_String);
                         // String status = j.getString("result");
                         // String Privilege = j.getString("Privilege");
                         // Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
                         if(status_String == "OK") {
-                            share = getSharedPreferences(Pref, Context.MODE_PRIVATE);
+                         /*   share = getSharedPreferences(Pref, Context.MODE_PRIVATE);
                             editor = share.edit();
-                            //editor.putString("");
+                            editor.putString("glass",j.getString("glass"));
+                            editor.putString("bottle",j.getString("bottle"));
+                            editor.putString("paysave",j.getString("paysave"));
+                       
+                            editor.commit();*/
+                         
+                            prg.hide();
                             Toast.makeText(getApplicationContext(),
-                                    "บันทึกเสร็จสิ้น", Toast.LENGTH_SHORT).show();
+                                    "บันทึกเสร็จสิ้น", Toast.LENGTH_LONG).show();
                         }
                     }catch (JSONException e){
                         prg.hide();
                         //  textviewShow.setText(e.getMessage());
                         //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-                        Toast.makeText(User_reduce.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(User_reduce.this, e.toString(), Toast.LENGTH_LONG).show();
                         Log.d("Whats wrong?", e.toString());
                         Log.e("JSON Parser", "Error parsing data " + e.toString());
 
@@ -116,9 +112,8 @@ public class User_reduce extends AppCompatActivity
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG,error.toString());
                     //  textviewShow.setText("Error");
+                    Toast.makeText(User_reduce.this, error.toString(), Toast.LENGTH_LONG).show();
                     prg.hide();
-
-
                 }
             }){
                 @Override
@@ -145,13 +140,7 @@ public class User_reduce extends AppCompatActivity
 
 
         share = getSharedPreferences("PrefWasteBank",Context.MODE_PRIVATE);
-        String userID = share.getString("id","No value") ;
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
-        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
-        name.setText(share.getString("name","No"));
-        navigationView.setNavigationItemSelectedListener(this);
+        userID = share.getString("id","No value") ;
 
         findID();
 
@@ -165,7 +154,12 @@ public class User_reduce extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
+        TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        name.setText(share.getString("name","No"));
+        navigationView.setNavigationItemSelectedListener(this);
 
         ImageButton buttoncamera = (ImageButton) findViewById(R.id.imageButton2);
         buttoncamera.setOnClickListener(new View.OnClickListener() {
@@ -194,9 +188,13 @@ public class User_reduce extends AppCompatActivity
                         prg.setCancelable(false);
                         prg.show();
 
-                        click();
-                        Toast.makeText(getApplicationContext(),
-                                "บันทึกเสร็จสิ้น", Toast.LENGTH_SHORT).show();
+                        if(type != "0"){
+                            click();
+                       }
+                        else{
+                            Toast.makeText(getApplicationContext(),"กรุณาเลือกชนิดของขยะ",Toast.LENGTH_SHORT).show();
+                            prg.hide();
+                        }
                     }
                 });
                 builder.setNegativeButton("ไม่บันทึก", new DialogInterface.OnClickListener() {
@@ -222,7 +220,7 @@ public class User_reduce extends AppCompatActivity
 
                         Demo_button.setImageResource(R.drawable.glass_stroke);
                         second_button.setImageResource(R.drawable.bottle1);
-                        Toast.makeText(User_reduce.this,"1", Toast.LENGTH_SHORT).show();
+                        type= "1";
                                            }
                                        });
 
@@ -231,8 +229,9 @@ public class User_reduce extends AppCompatActivity
 
                         Demo_button.setImageResource(R.drawable.glass2);
                         second_button.setImageResource(R.drawable.bottle_stroke);
-                        Toast.makeText(User_reduce.this,"2", Toast.LENGTH_SHORT).show();
-                                                     }
+
+                        type = "2";
+                    }
                                                  });
         //////////////end////////////////
 

@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity {
     SharedPreferences share ;
     SharedPreferences.Editor editor;
     private static final String URL = "https://notenonthawat.000webhostapp.com/login.php";
+    private  String Privilege;
     private String user,pass;
     private String loginState;
 
@@ -84,7 +85,7 @@ public class Login extends AppCompatActivity {
                        // String Privilege = j.getString("Privilege");
                        // Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
                         if(status == 1){
-                            String Privilege = j.getString("Privilege");
+                            Privilege = j.getString("Privilege");
                             switch (Privilege) {
 
                                 case "0" : {
@@ -103,6 +104,7 @@ public class Login extends AppCompatActivity {
 
                                     editor.putString("id",id);
                                     editor.putString("name",name);
+                                    editor.putString("Privilege",Privilege);
                                     editor.putString("paysave",paysave);
                                     editor.putString("bottle",bottle);
                                     editor.putString("glass",glass);
@@ -127,6 +129,7 @@ public class Login extends AppCompatActivity {
 
                                     id = j.getString("id");
                                     name = j.getString("name");
+                                    editor.putString("Privilege",Privilege);
                                     glass = j.getString("glass");
                                     bottle = j.getString("bottle");
                                     paysave = j.getString("paysave");
@@ -152,6 +155,7 @@ public class Login extends AppCompatActivity {
                                     intent.putExtra("glass",j.getString("glass"));*/
                                    id = j.getString("id");
                                     name = j.getString("name");
+                                    editor.putString("Privilege",Privilege);
                                     glass = j.getString("glass");
                                     bottle = j.getString("bottle");
                                     paysave = j.getString("paysave");

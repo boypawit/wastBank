@@ -23,9 +23,9 @@ public class User_Main extends AppCompatActivity
 
     //private static final String Pref = "PrefWasteBank";
     SharedPreferences share ;
+    SharedPreferences.Editor editor;
 
-
-
+    private String checkAlert ;
     private TextView glass,bottle,paysave;
     //private String email,password ;
 
@@ -35,9 +35,7 @@ public class User_Main extends AppCompatActivity
         paysave = (TextView) this.findViewById(R.id.paysave);
 
     }
-    public void getsharePref(){
 
-    }
 
 
     @Override
@@ -47,12 +45,21 @@ public class User_Main extends AppCompatActivity
         setContentView(R.layout.activity_main1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        aleatDetail();
+        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+        checkAlert = share.getString("checkAlert","");
 
+        String checknumberAlert = "0";
+        if(checknumberAlert == "1") {
+            aleatDetail();
+         /*  editor.putString("checkAlert","0");
+            editor.commit();*/
+
+         checknumberAlert = "1";
+        }
 
         findID();
 
-        share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+
 
         glass.setText(share.getString("glass","No"));
         bottle.setText(share.getString("bottle","No"));
@@ -89,8 +96,13 @@ public class User_Main extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+
+        // call header
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main1);
+        // เรียก textview ผ่านหัว
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -144,6 +156,7 @@ public class User_Main extends AppCompatActivity
         builder.setTitle("                      รู้หรือไม่?");
         builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
                 "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
+
         builder.setPositiveButton("ตกลง", null);
         builder.show();
 
