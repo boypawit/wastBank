@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="year_arrays">//item ที่จะเอาไปใช้ใน spiner
-      <item>2560</item>
-      <item>2561</item>
-      <item>2562</item>
-      <item>2563</item>
-      <item>2564</item>
-      <item>2565</item>
+      <item>2017</item>
+      <item>2018</item>
+      <item>2019</item>
+      <item>2020</item>
+
 
   </string-array>
 

@@ -1,5 +1,6 @@
 package com.example.boyvi.wastbank;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,8 @@ public class Admin_StatisticsYou extends AppCompatActivity
     private TextView glass,bottle,price,reduce_waste,reduce_co2;
     private String userID;
 
+    private ProgressDialog prg ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +72,10 @@ public class Admin_StatisticsYou extends AppCompatActivity
 
         click ();
         findID();
+        prg = new ProgressDialog(Admin_StatisticsYou.this);
+        prg.setMessage("รอสักครู่...");
+        prg.setCancelable(false);
+        prg.show();
 
 
         ///////////////////Spinner date///////////////////////////////
@@ -138,6 +145,7 @@ public class Admin_StatisticsYou extends AppCompatActivity
                     bottle.setText(j.getString("bottle").toString());
                     price.setText(j.getString("paysave").toString());
                     reduce_waste.setText(j.getString("waste_number").toString());
+                    prg.hide();
 
                     // re =  j.getString("bottle").toString();
 
@@ -146,7 +154,9 @@ public class Admin_StatisticsYou extends AppCompatActivity
 
 
                 } catch (JSONException e) {
+                    prg.hide();
                     e.printStackTrace();
+
                 }
 
 
@@ -156,7 +166,7 @@ public class Admin_StatisticsYou extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG,error.toString());
                 //  textviewShow.setText("Error");
-
+                prg.hide();
 
             }
         }){

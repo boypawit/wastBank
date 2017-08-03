@@ -41,6 +41,7 @@ public class User_Statistics extends AppCompatActivity
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
     Button buttonOk;
+    private ProgressDialog prg ;
 
     String spnDay,spnMonth,spnYear,spnToDay,SpnToMonth,SpnToYear;
 
@@ -78,6 +79,10 @@ public class User_Statistics extends AppCompatActivity
 
         click ();
         findID();
+        prg = new ProgressDialog(User_Statistics.this);
+        prg.setMessage("รอสักครู่...");
+        prg.setCancelable(false);
+        prg.show();
 
 
       ///////////////////Spinner date///////////////////////////////
@@ -169,6 +174,7 @@ public class User_Statistics extends AppCompatActivity
                         bottle.setText(j.getString("bottle").toString());
                         save_price.setText(j.getString("paysave").toString());
                         reduce_waste.setText(j.getString("waste_number").toString());
+                        prg.hide();
 
                       // re =  j.getString("bottle").toString();
 
@@ -187,6 +193,7 @@ public class User_Statistics extends AppCompatActivity
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG,error.toString());
                     //  textviewShow.setText("Error");
+                    prg.hide();
 
 
                 }
