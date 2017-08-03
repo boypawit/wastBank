@@ -140,7 +140,7 @@ public class User_Statistics extends AppCompatActivity
                 SpnToYear = spinnertoyear.getSelectedItem().toString();
 
 
-               /////////// ต่อสติงวันที่เเล้ว 
+               /////////// ต่อสติงวันที่เเล้ว
                 date = spnYear+spnMonth+spnDay;
                 todate = SpnToYear+SpnToMonth+spnToDay;
                 /*Toast.makeText(User_Statistics.this, date, Toast.LENGTH_SHORT).show();
