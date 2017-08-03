@@ -10,12 +10,28 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Admin_StatisticsYou extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +39,11 @@ public class Admin_StatisticsYou extends AppCompatActivity
     SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
+    private String TAG = Login.class.getSimpleName();
+    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/showall_stat.php";
+
+    private TextView glass,bottle,price,reduce_waste,reduce_co2;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +53,7 @@ public class Admin_StatisticsYou extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+        userID = share.getString("id","No");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,6 +66,9 @@ public class Admin_StatisticsYou extends AppCompatActivity
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
+
+        click ();
+        findID();
 
 
         ///////////////////Spinner date///////////////////////////////
@@ -86,6 +111,67 @@ public class Admin_StatisticsYou extends AppCompatActivity
         spinnertoyear.setAdapter(adaptertoyear);
 
     }
+
+
+
+    public void findID(){
+
+        glass = (TextView) findViewById(R.id.admin_glass);
+        bottle = (TextView) findViewById(R.id.admin_bottle);
+        price= (TextView) findViewById(R.id.admin_paysave);
+        reduce_waste = (TextView) findViewById(R.id.admin_reduce_waste);
+        reduce_co2 = (TextView) findViewById(R.id.admin_co2);
+    }
+
+
+
+    private void click (){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response.toString());
+                try {
+                    JSONObject j= new JSONObject(response.toString());
+
+                    glass.setText(j.getString("glass").toString());
+                    bottle.setText(j.getString("bottle").toString());
+                    price.setText(j.getString("paysave").toString());
+                    reduce_waste.setText(j.getString("waste_number").toString());
+
+                    // re =  j.getString("bottle").toString();
+
+                    //Toast.makeText(User_Statistics.this, re, Toast.LENGTH_SHORT).show();
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",userID);
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+    }
+
+
 
     @Override
     public void onBackPressed() {

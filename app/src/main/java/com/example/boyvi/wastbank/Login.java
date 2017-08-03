@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
     private String id,name,glass,bottle,paysave ;
     SharedPreferences share ;
     SharedPreferences.Editor editor;
-    private static final String URL = "https://boyvinai.000webhostapp.com/login.php";
+    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/login.php";
     private  String Privilege;
     private String user,pass;
     private String loginState;

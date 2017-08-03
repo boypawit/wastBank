@@ -44,19 +44,13 @@ public class User_Statistics extends AppCompatActivity
 
     String spnDay,spnMonth,spnYear,spnToDay,SpnToMonth,SpnToYear;
 
-    private static final String Pref = "PrefWasteBank";
-    private String id,name,glass,bottle,paysave ;
-    SharedPreferences share ;
-    SharedPreferences.Editor editor;
-    private static final String URL = "https://boyvinai.000webhostapp.com/login.php";
-    private  String Privilege;
-    private String user,pass;
-    private String loginState;
+    private TextView glass,bottle,save_price,reduce_waste,reduce_co2;
 
-    private ProgressDialog prg ;
+    private static final String Pref = "PrefWasteBank";
+    SharedPreferences share ;
+    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/showall_stat.php";
     private String TAG = Login.class.getSimpleName();
-    private EditText editemail,editpassword ;
-    private String email,password ;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +60,7 @@ public class User_Statistics extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+        userID = share.getString("id","No");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,7 +76,10 @@ public class User_Statistics extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        click ();
         findID();
+
+
       ///////////////////Spinner date///////////////////////////////
         spinnerday = (Spinner) findViewById(R.id.spinner_day);
         final String[] day = getResources().getStringArray(R.array.day_arrays);
@@ -142,14 +140,67 @@ public class User_Statistics extends AppCompatActivity
         });
 
 
+
+
     }
-
-
 
 
     public void findID(){
+
         buttonOk = (Button) findViewById(R.id.btn_Ok_mount);
+        glass = (TextView) findViewById(R.id.user_glass);
+        bottle = (TextView) findViewById(R.id.user_bottle);
+        save_price= (TextView) findViewById(R.id.user_price);
+        reduce_waste = (TextView) findViewById(R.id.user_reduce_west);
+        reduce_co2 = (TextView) findViewById(R.id.user_co2);
     }
+
+
+    private void click (){
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d(TAG,response.toString());
+                    try {
+                        JSONObject j= new JSONObject(response.toString());
+
+                        glass.setText(j.getString("glass").toString());
+                        bottle.setText(j.getString("bottle").toString());
+                        save_price.setText(j.getString("paysave").toString());
+                        reduce_waste.setText(j.getString("waste_number").toString());
+
+                      // re =  j.getString("bottle").toString();
+
+                        //Toast.makeText(User_Statistics.this, re, Toast.LENGTH_SHORT).show();
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(TAG,error.toString());
+                    //  textviewShow.setText("Error");
+
+
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams(){
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("userID",userID);
+                    return params;
+
+
+                }
+            };requestQueue.add(request);
+        }
 
     @Override
     public void onBackPressed() {
