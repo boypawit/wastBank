@@ -69,7 +69,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="ลดจำนวนเขวดรวมได้"
+        android:text="ลดจำนวนขวดรวมได้"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.246"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="71dp"
         android:layout_marginTop="8dp"
         android:text="กรัม"
         android:textSize="18sp"
@@ -130,7 +130,7 @@
         app:layout_constraintVertical_bias="0.399" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.26" />
 
     <TextView
-        android:id="@+id/textView41"
+        android:id="@+id/bottle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -166,7 +166,7 @@
         app:layout_constraintVertical_bias="0.399" />
 
     <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/paysave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"

@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                     Log.d(TAG,response.toString());
                     try{
 
-                        prg.hide();
+
                         editemail.setText("");
                         editpassword.setText("");
                         JSONObject j= new JSONObject(response.toString());

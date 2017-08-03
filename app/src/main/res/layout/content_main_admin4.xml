@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="สถิติคุณ/เดือน"
+        android:text="สถิติคุณ"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.498" />
 
     <TextView
-        android:id="@+id/textView71"
+        android:id="@+id/bottle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -167,8 +167,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.581" />
 
-    <TextView
-        android:id="@+id/textView72"
+     <TextView
+        android:id="@+id/paysave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -188,7 +188,7 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <TextView
-        android:id="@+id/textView73"
+        android:id="@+id/co2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -208,7 +208,7 @@
         app:layout_constraintVertical_bias="0.872" />
 
     <TextView
-        android:id="@+id/textView78"
+        android:id="@+id/waste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -228,7 +228,7 @@
         app:layout_constraintVertical_bias="0.751" />
 
     <TextView
-        android:id="@+id/textView99"
+        android:id="@+id/glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

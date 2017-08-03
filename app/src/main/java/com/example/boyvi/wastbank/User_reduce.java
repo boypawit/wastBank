@@ -145,9 +145,9 @@ public class User_reduce extends AppCompatActivity
                                  Toast.makeText(getApplicationContext(),
                                          "บันทึกเสร็จสิ้น", Toast.LENGTH_LONG).show();
                                  break;
-                             default: Toast.makeText(getApplicationContext(),
+                            /* default: Toast.makeText(getApplicationContext(),
                                      "1111", Toast.LENGTH_LONG).show();
-                                 break;
+                                 break;*/
                          }
                     }catch (JSONException e){
                         prg.hide();
@@ -316,7 +316,7 @@ public class User_reduce extends AppCompatActivity
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,50,stream);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
 
