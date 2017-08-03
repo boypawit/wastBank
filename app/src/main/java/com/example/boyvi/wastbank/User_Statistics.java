@@ -42,6 +42,8 @@ public class User_Statistics extends AppCompatActivity
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
     Button buttonOk;
     private ProgressDialog prg ;
+    String date;
+    String todate;
 
     String spnDay,spnMonth,spnYear,spnToDay,SpnToMonth,SpnToYear;
 
@@ -127,7 +129,7 @@ public class User_Statistics extends AppCompatActivity
         spinnertoyear.setAdapter(adaptertoyear);
 
 
-        buttonOk.setOnClickListener(new View.OnClickListener() {
+       buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 spnDay = spinnerday.getSelectedItem().toString();
@@ -137,13 +139,17 @@ public class User_Statistics extends AppCompatActivity
                 SpnToMonth = spinnertomonth.getSelectedItem().toString();
                 SpnToYear = spinnertoyear.getSelectedItem().toString();
 
-                Toast.makeText(User_Statistics.this, spnYear+spnMonth+spnDay, Toast.LENGTH_SHORT).show();
-                Toast.makeText(User_Statistics.this, SpnToYear+SpnToMonth+spnToDay, Toast.LENGTH_SHORT).show();
+
+               /////////// ต่อสติงวันที่เเล้ว 
+                date = spnYear+spnMonth+spnDay;
+                todate = SpnToYear+SpnToMonth+spnToDay;
+                /*Toast.makeText(User_Statistics.this, date, Toast.LENGTH_SHORT).show();
+                Toast.makeText(User_Statistics.this, todate, Toast.LENGTH_SHORT).show();*/
+
 
 
             }
         });
-
 
 
 
