@@ -1,5 +1,6 @@
 package com.example.boyvi.wastbank;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,18 +11,52 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class User_Statistics extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
+    Button buttonOk;
+
+    String spnDay,spnMonth,spnYear,spnToDay,SpnToMonth,SpnToYear;
+
+    private static final String Pref = "PrefWasteBank";
+    private String id,name,glass,bottle,paysave ;
+    SharedPreferences share ;
+    SharedPreferences.Editor editor;
+    private static final String URL = "https://boyvinai.000webhostapp.com/login.php";
+    private  String Privilege;
+    private String user,pass;
+    private String loginState;
+
+    private ProgressDialog prg ;
+    private String TAG = Login.class.getSimpleName();
+    private EditText editemail,editpassword ;
+    private String email,password ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +81,7 @@ public class User_Statistics extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        findID();
       ///////////////////Spinner date///////////////////////////////
         spinnerday = (Spinner) findViewById(R.id.spinner_day);
         final String[] day = getResources().getStringArray(R.array.day_arrays);
@@ -67,6 +103,8 @@ public class User_Statistics extends AppCompatActivity
 
         ////////////////////////dath to day///////////////////
 
+
+
         spinnertoday = (Spinner) findViewById(R.id.spinner_today);
         final String[] today = getResources().getStringArray(R.array.day_arrays);
         ArrayAdapter<String> adaptertoday = new ArrayAdapter<String>(this,
@@ -85,6 +123,32 @@ public class User_Statistics extends AppCompatActivity
                 android.R.layout.simple_dropdown_item_1line,toyear);
         spinnertoyear.setAdapter(adaptertoyear);
 
+
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spnDay = spinnerday.getSelectedItem().toString();
+                spnMonth = spinnermonth.getSelectedItem().toString();
+                spnYear = spinneryear.getSelectedItem().toString();
+                spnToDay = spinnertoday.getSelectedItem().toString();
+                SpnToMonth = spinnertomonth.getSelectedItem().toString();
+                SpnToYear = spinnertoyear.getSelectedItem().toString();
+
+                Toast.makeText(User_Statistics.this, spnYear+spnMonth+spnDay, Toast.LENGTH_SHORT).show();
+                Toast.makeText(User_Statistics.this, SpnToYear+SpnToMonth+spnToDay, Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+    }
+
+
+
+
+    public void findID(){
+        buttonOk = (Button) findViewById(R.id.btn_Ok_mount);
     }
 
     @Override
