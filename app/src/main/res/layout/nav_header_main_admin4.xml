@@ -13,6 +13,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pictureProfile4"
         android:layout_width="85dp"
         android:layout_height="48dp"
         android:src="@drawable/testuser"

@@ -310,25 +310,26 @@
         android:layout_marginEnd="8dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/textSearch"
         android:layout_width="156dp"
         android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="571140000"
-        android:gravity="top|center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.039"
-        app:layout_constraintHorizontal_bias="0.849"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="top|center_horizontal"
+        android:hint="ชื่อ-สกุล หรือ รหัส"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
 
     <TextView
         android:id="@+id/textView94"
@@ -371,7 +372,7 @@
         android:layout_marginEnd="8dp" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/buttonSearch"
         android:layout_width="76dp"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"

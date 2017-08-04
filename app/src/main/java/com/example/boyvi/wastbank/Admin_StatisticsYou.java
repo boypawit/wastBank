@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,12 +13,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,6 +41,8 @@ import java.util.Map;
 public class Admin_StatisticsYou extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences shareimage ;
+    private String sharepicture;
     SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
@@ -58,6 +64,9 @@ public class Admin_StatisticsYou extends AppCompatActivity
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
         userID = share.getString("id","No");
 
+        shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+        sharepicture = shareimage.getString("image_data","");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -65,8 +74,17 @@ public class Admin_StatisticsYou extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin3);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin1);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+
+        ImageView imagepic =(ImageView) headerView.findViewById(R.id.pictureProfile1);
+
+        if( !sharepicture.equalsIgnoreCase("")){
+            byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            imagepic.setImageBitmap(bitmap);
+        }
+
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 

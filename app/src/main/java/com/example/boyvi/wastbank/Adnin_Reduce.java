@@ -51,6 +51,8 @@ import java.util.Map;
 
 public class Adnin_Reduce extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    SharedPreferences shareimage ;
+    private String sharepicture;
     private static final String Pref = "PrefWasteBank";
     ProgressDialog prg ;
     private String TAG = User_reduce.class.getSimpleName();
@@ -109,6 +111,10 @@ public class Adnin_Reduce extends AppCompatActivity
         findID();
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
         userID = share.getString("id","No value") ;
+
+        shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+        sharepicture = shareimage.getString("image_data","");
+
 
 
         ImageButton buttonCountry = (ImageButton) findViewById(R.id.imageButton);
@@ -205,6 +211,14 @@ public class Adnin_Reduce extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin2);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        ImageView imagephoto =(ImageView) headerView.findViewById(R.id.pictureProfile2);
+
+        if( !sharepicture.equalsIgnoreCase("")){
+            byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            imagephoto.setImageBitmap(bitmap);
+        }
+
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 

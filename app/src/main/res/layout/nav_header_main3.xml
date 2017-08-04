@@ -14,6 +14,7 @@
     android:weightSum="1">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageProStatic"
         android:layout_width="74dp"
         android:layout_height="50dp"
         android:src="@drawable/testuser"

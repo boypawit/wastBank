@@ -1,8 +1,11 @@
 package com.example.boyvi.wastbank;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,19 +13,46 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Admin_StatisticsAll extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    SharedPreferences shareimage ;
+    private String sharepicture;
     SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
+    private ProgressDialog prg ;
+    private String userID;
+
+    private String TAG = Login.class.getSimpleName();
+    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/admin_showAllstat_main.php";
+
+    private TextView countuser,glass,bottle,price,reduce_waste,reduce_co2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +61,18 @@ public class Admin_StatisticsAll extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
+        userID = share.getString("id","No");
 
+
+        shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+        sharepicture = shareimage.getString("image_data","");
+
+        click ();
+        findID();
+        prg = new ProgressDialog(Admin_StatisticsAll.this);
+        prg.setMessage("รอสักครู่...");
+        prg.setCancelable(false);
+        prg.show();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +83,15 @@ public class Admin_StatisticsAll extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin3);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+
+        ImageView imagepic =(ImageView) headerView.findViewById(R.id.pictureProfile3);
+
+        if( !sharepicture.equalsIgnoreCase("")){
+            byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            imagepic.setImageBitmap(bitmap);
+        }
+
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -86,6 +136,74 @@ public class Admin_StatisticsAll extends AppCompatActivity
         spinnertoyear.setAdapter(adaptertoyear);
 
     }
+
+    public void findID(){
+
+        countuser = (TextView) findViewById(R.id.static_people);
+        glass = (TextView) findViewById(R.id.static_glass);
+        bottle = (TextView) findViewById(R.id.static_bottle);
+        price= (TextView) findViewById(R.id.static_payprice);
+        reduce_waste = (TextView) findViewById(R.id.static_weste);
+        reduce_co2 = (TextView) findViewById(R.id.static_co2);
+    }
+
+
+
+    private void click (){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response.toString());
+                try {
+                    JSONObject j= new JSONObject(response.toString());
+
+                    countuser.setText(j.getString("usercount").toString());
+                    glass.setText(j.getString("glass").toString());
+                    bottle.setText(j.getString("bottle").toString());
+                    price.setText(j.getString("paysave").toString());
+                    reduce_waste.setText(j.getString("waste_number").toString());
+
+                    prg.hide();
+
+                    // re =  j.getString("bottle").toString();
+
+                    //Toast.makeText(User_Statistics.this, re, Toast.LENGTH_SHORT).show();
+
+
+
+                } catch (JSONException e) {
+                    prg.hide();
+                    e.printStackTrace();
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+                prg.hide();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",userID);
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+    }
+
+
+
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

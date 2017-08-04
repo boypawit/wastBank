@@ -54,6 +54,8 @@ import java.util.Map;
 public class User_reduce extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String Pref = "PrefWasteBank";
+    SharedPreferences shareimage ;
+    private String sharepicture;
     ProgressDialog prg ;
     private String TAG = User_reduce.class.getSimpleName();
     private  String URL =  "https://jirayuhe57.000webhostapp.com/android/use_reduce.php";
@@ -198,6 +200,11 @@ public class User_reduce extends AppCompatActivity
         share = getSharedPreferences("PrefWasteBank",Context.MODE_PRIVATE);
         userID = share.getString("id","No value") ;
 
+
+        shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+        sharepicture = shareimage.getString("image_data","");
+
+
         findID();
 
         price.setText("0");
@@ -214,6 +221,16 @@ public class User_reduce extends AppCompatActivity
 
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main2);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+
+        ImageView image =(ImageView) headerView.findViewById(R.id.imageProfileUser);
+
+        if( !sharepicture.equalsIgnoreCase("")){
+            byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
+            Bitmap bitm = BitmapFactory.decodeByteArray(b, 0, b.length);
+            image.setImageBitmap(bitm);
+        }
+
+
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -303,9 +320,6 @@ public class User_reduce extends AppCompatActivity
         //////////////end////////////////
 
 
-
-
-
     }
 
     @Override
@@ -316,13 +330,9 @@ public class User_reduce extends AppCompatActivity
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,20,stream);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
-
-
-
-
         }
     }
 

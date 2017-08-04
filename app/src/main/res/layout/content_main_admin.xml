@@ -200,7 +200,7 @@
         app:srcCompat="@drawable/water" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageAdmin"
         android:layout_width="86dp"
         android:layout_height="133dp"
         android:layout_marginBottom="8dp"

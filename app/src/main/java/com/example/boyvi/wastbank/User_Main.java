@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
@@ -13,11 +14,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +29,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,12 +45,17 @@ public class User_Main extends AppCompatActivity
 
     //private static final String Pref = "PrefWasteBank";
     SharedPreferences share ;
-    SharedPreferences.Editor editor;
+    SharedPreferences shareimage ;
+    SharedPreferences.Editor editorimage;
 
     private String checkAlert ;
     private TextView glass,bottle,paysave;
     private ProgressDialog prg ;
-    private String URL = "https://jirayuhe57.000webhostapp.com/android/use_reduce.php";
+    private String URL = "https://jirayuhe57.000webhostapp.com/android/user_show_main.php";
+    private String UrlPicture;
+    private String jsonimageprofile;
+    ImageView imageProfile;
+
     private String TAG = User_Main.class.getSimpleName();
 
     private String id ;
@@ -81,14 +91,19 @@ public class User_Main extends AppCompatActivity
                     //   JSONObject j = response.getJSONObject("dataUser");
                     //  String userID = j.getString("id");
                     String status_String = j.getString("result");
-                    Toast.makeText(User_Main.this,"aaaa้",Toast.LENGTH_SHORT).show();
+                    jsonimageprofile = j.getString("pic_profi");
+                    if (jsonimageprofile!="") {
+                        loadimage();//////imafeView
+                    }
+
+
                     switch(status_String) {
                         case "OK" :
-                            Toast.makeText(User_Main.this,"bbb",Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(User_Main.this,id,Toast.LENGTH_SHORT).show();
                             prg.hide();
-                            glass.setText(j.getString("glass").toString());
-                            bottle.setText(j.getString("bottle").toString());
-                            paysave.setText(j.getString("paysave").toString());
+                            glass.setText(j.getString("glass"));
+                            bottle.setText(j.getString("bottle"));
+                            paysave.setText(j.getString("paysave"));
                             break ;
                         default:
                             Toast.makeText(User_Main.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
@@ -144,15 +159,9 @@ public class User_Main extends AppCompatActivity
         checkAlert = share.getString("checkAlert","");
 
         id = share.getString("id","");
+        //Toast.makeText(User_Main.this,id,Toast.LENGTH_SHORT).show();
 
-        String checknumberAlert = "0";
-        if(checknumberAlert == "1") {
             aleatDetail();
-         /*  editor.putString("checkAlert","0");
-            editor.commit();*/
-
-         checknumberAlert = "1";
-        }
 
 
         findID();
@@ -205,13 +214,51 @@ public class User_Main extends AppCompatActivity
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main1);
         // เรียก textview ผ่านหัว
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
+        imageProfile = (ImageView) headerView.findViewById(R.id.imageProfile);
 
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
 
+
+    private void loadimage(){
+        UrlPicture = "https://jirayuhe57.000webhostapp.com/android/images/"+jsonimageprofile;
+        ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
+            @Override
+            public void onResponse(Bitmap bitmap) {
+
+
+                imageProfile.setImageBitmap(bitmap);
+               /* shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+                editorimage = share.edit();
+*/
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] b = baos.toByteArray();
+
+                String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+                //Toast.makeText(getApplicationContext(),encodedImage.toString(),Toast.LENGTH_LONG).show();
+                // textEncode.setText(encodedImage);
+
+                shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+                editorimage = shareimage.edit();
+                editorimage.putString("image_data",encodedImage);
+                editorimage.commit();
+            }
+        },0,0, ImageView.ScaleType.FIT_XY,null,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(imageRequest);
 
     }
+
 
     @Override
     public void onBackPressed() {

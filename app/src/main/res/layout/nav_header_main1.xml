@@ -15,7 +15,8 @@
     android:weightSum="1">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+
+        android:id="@+id/imageProfile"
         android:layout_width="69dp"
         android:layout_height="50dp"
 
