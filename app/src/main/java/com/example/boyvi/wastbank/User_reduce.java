@@ -103,7 +103,9 @@ public class User_reduce extends AppCompatActivity
 
     private void click (){
 
-        paysave = price.getText().toString();
+        if (price.getText().toString()!="") {
+            paysave = price.getText().toString();
+        }
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
@@ -207,8 +209,6 @@ public class User_reduce extends AppCompatActivity
 
         findID();
 
-        price.setText("0");
-
         ///////Edit by pawit//////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -302,7 +302,7 @@ public class User_reduce extends AppCompatActivity
 
                     public void onClick(View v) {
 
-                        Demo_button.setImageResource(R.drawable.glass_stroke);
+                        Demo_button.setImageResource(R.drawable.glass_stroke1);
                         second_button.setImageResource(R.drawable.bottle1);
                         type= "1";
                                            }
@@ -330,7 +330,7 @@ public class User_reduce extends AppCompatActivity
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG,20,stream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,10,stream);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
         }

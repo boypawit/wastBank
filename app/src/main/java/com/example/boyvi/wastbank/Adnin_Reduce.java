@@ -58,7 +58,7 @@ public class Adnin_Reduce extends AppCompatActivity
     private String TAG = User_reduce.class.getSimpleName();
     private  String URL =  "https://jirayuhe57.000webhostapp.com/android/use_reduce.php";
     private ImageView ImgGlass , ImgBottle ;
-    private String userID,paysave ;
+    private String userID,paysave ="0" ;
     private String type = "0";
     private EditText price;
 
@@ -184,7 +184,7 @@ public class Adnin_Reduce extends AppCompatActivity
 
             public void onClick(View v) {
 
-                Demo_button.setImageResource(R.drawable.glass_stroke);
+                Demo_button.setImageResource(R.drawable.glass_stroke1);
                 second_button.setImageResource(R.drawable.bottle1);
                 type= "1";
             }
@@ -229,8 +229,9 @@ public class Adnin_Reduce extends AppCompatActivity
 
     private void click (){
 
-        paysave = price.getText().toString();
-
+        if (price.getText().toString()!="") {
+            paysave = price.getText().toString();
+        }
         RequestQueue requestQueue = Volley.newRequestQueue(this);
             /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
             urlJsonObj, null, new Response.Listener<JSONObject>() */
@@ -323,7 +324,7 @@ public class Adnin_Reduce extends AppCompatActivity
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG,1,stream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,10,stream);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
 

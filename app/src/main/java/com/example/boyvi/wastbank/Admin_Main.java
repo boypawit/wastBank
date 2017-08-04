@@ -156,7 +156,7 @@ public class Admin_Main extends AppCompatActivity
                 editorimage = share.edit();
 */
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos);
                 byte[] b = baos.toByteArray();
 
                 String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
