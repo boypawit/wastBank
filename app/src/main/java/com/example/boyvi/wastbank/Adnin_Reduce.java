@@ -66,12 +66,17 @@ public class Adnin_Reduce extends AppCompatActivity
     SharedPreferences share ;
     SharedPreferences.Editor editor;
 
+    private ImageView Demo_button;
+    private ImageView second_button;
+
     private Button button;
     private String encode_string="",image_name;
     Bitmap bitmap;
     File file;
     Uri file_uri;
     private TextView textView;
+
+    ImageView noimage;
 
     private static int TAKE_PHOTO_REQUEST_CODE=1;
 
@@ -97,6 +102,7 @@ public class Adnin_Reduce extends AppCompatActivity
 
     public void findID(){
         price = (EditText) findViewById(R.id.editPrice);
+        noimage = (ImageView) findViewById(R.id.noImageViewAdmin);
 
     }
 
@@ -109,6 +115,8 @@ public class Adnin_Reduce extends AppCompatActivity
         verifyStoragePermissions(this);
         ///////Edit by pawit//////////
         findID();
+       // noimage.setRotation(90);
+
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
         userID = share.getString("id","No value") ;
 
@@ -176,8 +184,8 @@ public class Adnin_Reduce extends AppCompatActivity
         });
 
 
-        final ImageView Demo_button = (ImageView )findViewById(R.id.imageGlass);
-        final ImageView second_button = (ImageView )findViewById(R.id.imageBottle);
+        Demo_button = (ImageView )findViewById(R.id.imageGlass);
+        second_button = (ImageView )findViewById(R.id.imageBottle);
 
 // when you click this demo button
         Demo_button.setOnClickListener(new View.OnClickListener() {
@@ -222,9 +230,6 @@ public class Adnin_Reduce extends AppCompatActivity
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
-
     }
 
     private void click (){
@@ -244,6 +249,11 @@ public class Adnin_Reduce extends AppCompatActivity
                 Log.d(TAG,response.toString());
                 try{
                     encode_string="";
+                    noimage.setImageResource(R.drawable.noimage);
+                    Demo_button.setImageResource(R.drawable.bottle1);
+                    second_button.setImageResource(R.drawable.glass2);
+                    price.setText("");
+
                     JSONObject j= new JSONObject(response.toString());
                     //   JSONObject j = response.getJSONObject("dataUser");
                     //  String userID = j.getString("id");
@@ -325,11 +335,9 @@ public class Adnin_Reduce extends AppCompatActivity
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG,10,stream);
+            noimage.setImageBitmap(bitmap);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
-
-
-
 
         }
     }

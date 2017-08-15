@@ -67,14 +67,19 @@ public class User_reduce extends AppCompatActivity
     private String status_String = "";
     SharedPreferences share ;
     SharedPreferences.Editor editor;
+    private ImageView noimage;
 
     private Button button;
     private String encode_string="",image_name;
     Bitmap bitmap;
     File file;
     Uri file_uri;
+
+    private ImageView Demo_button;
+   private ImageView second_button;
+
     private TextView textView;
-    private static int TAKE_PHOTO_REQUEST_CODE=1;
+    private static int REQUEST_IMAGE_CAPTURE=1;
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -98,6 +103,7 @@ public class User_reduce extends AppCompatActivity
     
     public void findID(){
             price = (EditText) findViewById(R.id.editText5);
+        noimage = (ImageView) findViewById(R.id.noImageView);
 
     }
 
@@ -119,6 +125,11 @@ public class User_reduce extends AppCompatActivity
                     Log.d(TAG,response.toString());
                     try{
                         encode_string="";
+                        noimage.setImageResource(R.drawable.noimage);
+                        second_button.setImageResource(R.drawable.bottle1);
+                        Demo_button.setImageResource(R.drawable.glass2);
+                        price.setText("");
+
                         JSONObject j= new JSONObject(response.toString());
                         //   JSONObject j = response.getJSONObject("dataUser");
                         //  String userID = j.getString("id");
@@ -150,7 +161,7 @@ public class User_reduce extends AppCompatActivity
                                          "บันทึกเสร็จสิ้น", Toast.LENGTH_LONG).show();
                                  break;
                              default: Toast.makeText(getApplicationContext(),
-                                     "1111", Toast.LENGTH_LONG).show();
+                                     "ไมีปัญหาบางอย่าง!!! ไม่สามารถบันทึกได้", Toast.LENGTH_LONG).show();
                                  break;
                          }
                     }catch (JSONException e){
@@ -208,6 +219,7 @@ public class User_reduce extends AppCompatActivity
 
 
         findID();
+        //noimage.setRotation(0);
 
         ///////Edit by pawit//////////
 
@@ -245,8 +257,7 @@ public class User_reduce extends AppCompatActivity
                 file_uri = Uri.fromFile(file);
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,file_uri);
-                startActivityForResult(intent,TAKE_PHOTO_REQUEST_CODE);
-
+                startActivityForResult(intent,REQUEST_IMAGE_CAPTURE);///error api 24 REQUEST_IMAGE_CAPTURE
 
             }
         });
@@ -294,8 +305,8 @@ public class User_reduce extends AppCompatActivity
 
 
 
-        final ImageView Demo_button = (ImageView )findViewById(R.id.imgGlass);
-        final ImageView second_button = (ImageView )findViewById(R.id.imgBut);
+        Demo_button = (ImageView )findViewById(R.id.imgGlass);
+        second_button = (ImageView )findViewById(R.id.imgBut);
 
 // when you click this demo button
                 Demo_button.setOnClickListener(new View.OnClickListener() {
@@ -326,11 +337,13 @@ public class User_reduce extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==TAKE_PHOTO_REQUEST_CODE&&resultCode==RESULT_OK) {
+        if (requestCode==REQUEST_IMAGE_CAPTURE&&resultCode==RESULT_OK) {
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG,10,stream);
+
+            noimage.setImageBitmap(bitmap);
             byte[] array = stream.toByteArray();
             encode_string = Base64.encodeToString(array,0);
         }

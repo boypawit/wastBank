@@ -140,12 +140,12 @@ public class Admin_StatisticsYou extends AppCompatActivity
 
 
     public void findID(){
-
         glass = (TextView) findViewById(R.id.admin_glass);
         bottle = (TextView) findViewById(R.id.admin_bottle);
         price= (TextView) findViewById(R.id.admin_paysave);
         reduce_waste = (TextView) findViewById(R.id.admin_reduce_waste);
         reduce_co2 = (TextView) findViewById(R.id.admin_co2);
+
     }
 
 
@@ -158,7 +158,6 @@ public class Admin_StatisticsYou extends AppCompatActivity
                 Log.d(TAG,response.toString());
                 try {
                     JSONObject j= new JSONObject(response.toString());
-
                     glass.setText(j.getString("glass").toString());
                     bottle.setText(j.getString("bottle").toString());
                     price.setText(j.getString("paysave").toString());

@@ -52,7 +52,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.134"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/imageBottle"
@@ -68,7 +70,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintHorizontal_bias="0.738"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.135"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/editPrice"
@@ -87,7 +91,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.673" />
+        app:layout_constraintVertical_bias="0.673"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView63"
@@ -108,25 +114,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.017"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="114dp"
         android:layout_height="66dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.475"
-        app:srcCompat="@drawable/ic_add_a_photo" />
+        app:layout_constraintVertical_bias="0.498"
+        app:srcCompat="@drawable/ic_add_a_photo"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/noImageViewAdmin"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.252" />
 
     <TextView
         android:id="@+id/textView96"
@@ -145,7 +156,9 @@
         app:layout_constraintVertical_bias="0.657"
         app:layout_constraintRight_toLeftOf="@+id/editPrice"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.883" />
+        app:layout_constraintHorizontal_bias="0.883"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView97"
@@ -164,7 +177,9 @@
         app:layout_constraintVertical_bias="0.665"
         app:layout_constraintLeft_toRightOf="@+id/editPrice"
         android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.073" />
+        app:layout_constraintHorizontal_bias="0.073"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/button_save"
@@ -183,7 +198,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.847"
-        tools:layout_editor_absoluteY="382dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -195,7 +211,9 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="@+id/imageGlass"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageGlass" />
+        app:layout_constraintLeft_toLeftOf="@+id/imageGlass"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView74"
@@ -208,8 +226,25 @@
         app:layout_constraintLeft_toLeftOf="@+id/imageBottle"
         app:layout_constraintRight_toRightOf="@+id/imageBottle"
         app:layout_constraintTop_toTopOf="@+id/imageBottle"
-        app:layout_constraintHorizontal_bias="0.428" />
+        app:layout_constraintHorizontal_bias="0.428"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
+    <ImageView
+        android:id="@+id/noImageViewAdmin"
+        android:layout_width="88dp"
+        android:layout_height="92dp"
+        app:srcCompat="@drawable/noimage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.239" />
 
 
 </android.support.constraint.ConstraintLayout>
