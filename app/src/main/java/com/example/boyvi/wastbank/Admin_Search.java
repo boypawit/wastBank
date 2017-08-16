@@ -34,12 +34,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +60,12 @@ public class Admin_Search extends AppCompatActivity
     String textsearch;
     private ProgressDialog prg ;
     private String URL = "http://wastebank.ilab-ubu.net/android/admin_search_user.php";
+
+
+    ///// image search
+    String imagesearch;
+    String PrivilageProfile;
+    String UrlImagesearch;
 
     private String TAG = Admin_Search.class.getSimpleName();
 
@@ -122,6 +130,10 @@ public class Admin_Search extends AppCompatActivity
                 prg.setCancelable(false);
                 prg.show();
 
+                /*
+                PrivilageProfile = "2";
+                searchImage ();
+                */
 
             }
         });
@@ -138,6 +150,34 @@ public class Admin_Search extends AppCompatActivity
         reduce_co2 = (TextView) findViewById(R.id.static_co2);
         imageProfile = (ImageView) findViewById(R.id.profileSearch) ;
     }
+
+    ///////////////////////// searchimage By pqwit//////////
+    private void searchImage (){
+//  UrlPicture = "https://jirayuhe57.000webhostapp.com/android/images/"+jsonimageprofile;
+        switch (PrivilageProfile){
+            case "0": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
+            case "1": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
+            case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/student1.jpg";  break;
+        }
+        ImageRequest imageRequest = new ImageRequest(UrlImagesearch,new Response.Listener<Bitmap>(){
+            @Override
+            public void onResponse(Bitmap bitmap) {
+
+                imageProfile.setImageBitmap(bitmap);
+
+            }
+        },0,0, ImageView.ScaleType.FIT_XY,null,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(imageRequest);
+
+    }
+
 
 
     private void loadData (){
@@ -164,7 +204,17 @@ public class Admin_Search extends AppCompatActivity
                             bottle.setText(j.getString("bottle"));
                             save_price.setText(j.getString("paysave"));
                             reduce_waste.setText(j.getString("waste_number"));
-                            reduce_co2.setText(j.getString("co2_number"));
+                            reduce_co2.setText(j.getString("countCo2"));
+
+                            //////////// image//////////
+                           // PrivilageProfile = j.getString("Privilege");
+                            PrivilageProfile = "2";
+                            //imagesearch = j.getString("imageSearch");
+
+                            searchImage ();
+
+
+
                             prg.hide();
 
                             break ;
@@ -199,6 +249,8 @@ public class Admin_Search extends AppCompatActivity
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("key",spnselectGender);
                 params.put("value",textsearch);
+
+
                 return params;
 
 
@@ -206,12 +258,6 @@ public class Admin_Search extends AppCompatActivity
         };requestQueue.add(request);
 
     }
-
-
-
-
-
-
 
 
     @Override

@@ -161,8 +161,6 @@ public class Admin_Main extends AppCompatActivity
         ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
             @Override
             public void onResponse(Bitmap bitmap) {
-
-
               imageProfile.setImageBitmap(bitmap);
                /* shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
                 editorimage = share.edit();
