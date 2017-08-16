@@ -55,7 +55,7 @@ public class Admin_Search extends AppCompatActivity
     String spnselectGender;
     String selecetspn;
     ImageButton btnsearch;
-    private TextView search,glass,bottle,save_price,reduce_waste,reduce_co2;
+    private TextView search,glass,bottle,save_price,reduce_waste,reduce_co2,name;
    private ImageView imageProfile ;
     String textsearch;
     private ProgressDialog prg ;
@@ -115,6 +115,10 @@ public class Admin_Search extends AppCompatActivity
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                prg = new ProgressDialog(Admin_Search.this);
+                prg.setMessage("รอสักครู่...");
+                prg.setCancelable(false);
+
                 textsearch = search.getText().toString();
                 spnselectGender = spinnerGender.getSelectedItem().toString();
                 switch (spnselectGender) {
@@ -124,16 +128,20 @@ public class Admin_Search extends AppCompatActivity
                     case "ชื่อ-สกุล" :
                         spnselectGender = "name" ;
                 }
-                loadData();
-                prg = new ProgressDialog(Admin_Search.this);
-                prg.setMessage("รอสักครู่...");
-                prg.setCancelable(false);
-                prg.show();
+                if(textsearch.isEmpty()){
+                    Toast.makeText(Admin_Search.this,"กรุณากรอกชื่อหรือรหัสที่จะใช้ค้นหา",Toast.LENGTH_SHORT).show();
+                } else {
+                    prg.show();
+                    loadData();
 
-                /*
+                }
+
+
+
+/*
                 PrivilageProfile = "2";
                 searchImage ();
-                */
+*/
 
             }
         });
@@ -149,6 +157,8 @@ public class Admin_Search extends AppCompatActivity
         reduce_waste = (TextView) findViewById(R.id.static_weste);
         reduce_co2 = (TextView) findViewById(R.id.static_co2);
         imageProfile = (ImageView) findViewById(R.id.profileSearch) ;
+
+        name = (TextView) findViewById(R.id.name);
     }
 
     ///////////////////////// searchimage By pqwit//////////
@@ -157,7 +167,8 @@ public class Admin_Search extends AppCompatActivity
         switch (PrivilageProfile){
             case "0": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
             case "1": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
-            case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/student1.jpg";  break;
+  //          case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/student1.jpg";  break;
+            case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/"+imagesearch;  break;
         }
         ImageRequest imageRequest = new ImageRequest(UrlImagesearch,new Response.Listener<Bitmap>(){
             @Override
@@ -192,14 +203,14 @@ public class Admin_Search extends AppCompatActivity
 
                     JSONObject j= new JSONObject(response);
                     String status_String = j.getString("result");
-                    Toast.makeText(Admin_Search.this,status_String,Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Admin_Search.this,status_String,Toast.LENGTH_SHORT).show();
                     prg.hide();
 
 
                     switch(status_String) {
                         case "OK" :
                             // Toast.makeText(User_Main.this,id,Toast.LENGTH_SHORT).show();
-
+                            name.setText(j.getString("name"));
                             glass.setText(j.getString("glass"));
                             bottle.setText(j.getString("bottle"));
                             save_price.setText(j.getString("paysave"));
@@ -207,10 +218,10 @@ public class Admin_Search extends AppCompatActivity
                             reduce_co2.setText(j.getString("countCo2"));
 
                             //////////// image//////////
-                           // PrivilageProfile = j.getString("Privilege");
-                            PrivilageProfile = "2";
-                            //imagesearch = j.getString("imageSearch");
-
+                            PrivilageProfile = j.getString("Privilege");
+                       //     PrivilageProfile = "2";
+                            imagesearch = j.getString("pic_profi");
+                        //    Toast.makeText(Admin_Search.this,j.getString("name"),Toast.LENGTH_SHORT).show();
                             searchImage ();
 
 
@@ -228,7 +239,9 @@ public class Admin_Search extends AppCompatActivity
                     prg.hide();
                     //  textviewShow.setText(e.getMessage());
                     //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-                    Toast.makeText(Admin_Search.this, e.toString(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Admin_Search.this, e.toString(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(Admin_Search.this,spnselectGender + " " + textsearch, Toast.LENGTH_SHORT).show();
                     Log.d("Whats wrong?", e.toString());
                     Log.e("JSON Parser", "Error parsing data " + e.toString());
 
