@@ -142,7 +142,7 @@
         android:layout_marginEnd="8dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/statAll"
         android:layout_width="92dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"

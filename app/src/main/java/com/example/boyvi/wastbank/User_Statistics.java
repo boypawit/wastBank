@@ -48,7 +48,7 @@ public class User_Statistics extends AppCompatActivity
 
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
-    Button buttonOk;
+    Button buttonOk, buttonAll;
     private ProgressDialog prg ;
     String date;
     String todate;
@@ -59,7 +59,8 @@ public class User_Statistics extends AppCompatActivity
 
     private static final String Pref = "PrefWasteBank";
     SharedPreferences share ;
-    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/showall_stat.php";
+    private static final String URL = "http://wastebank.ilab-ubu.net/android/showstat_select_day.php";
+    private static  final String URL2 = "http://wastebank.ilab-ubu.net/android/showall_stat.php";
     private String TAG = Login.class.getSimpleName();
     private String userID;
 
@@ -99,7 +100,7 @@ public class User_Statistics extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        click ();
+        loadData ();
         findID();
         prg = new ProgressDialog(User_Statistics.this);
         prg.setMessage("รอสักครู่...");
@@ -161,17 +162,27 @@ public class User_Statistics extends AppCompatActivity
 
 
                /////////// ต่อสติงวันที่เเล้ว
-                date = spnYear+spnMonth+spnDay;
-                todate = SpnToYear+SpnToMonth+spnToDay;
-                /*Toast.makeText(User_Statistics.this, date, Toast.LENGTH_SHORT).show();
-                Toast.makeText(User_Statistics.this, todate, Toast.LENGTH_SHORT).show();*/
+                String MonthNumber  = switchMounth(spnMonth);
+                String MonthNumber2  = switchMounth(SpnToMonth);
 
+                date = spnYear+"-"+MonthNumber+"-"+spnDay+"%";
+                todate = SpnToYear+"-"+MonthNumber2+"-"+spnToDay+"%";
+               // Toast.makeText(User_Statistics.this, date, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(User_Statistics.this,userID +" "+date+" "+ todate, Toast.LENGTH_SHORT).show();
+                prg.show();
+                click();
 
 
             }
         });
 
+        buttonAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                loadData();
+            }
+        });
 
     }
 
@@ -179,6 +190,7 @@ public class User_Statistics extends AppCompatActivity
     public void findID(){
 
         buttonOk = (Button) findViewById(R.id.btn_Ok_mount);
+        buttonAll = (Button) findViewById(R.id.statAll);
         glass = (TextView) findViewById(R.id.user_glass);
         bottle = (TextView) findViewById(R.id.user_bottle);
         save_price= (TextView) findViewById(R.id.user_price);
@@ -187,19 +199,22 @@ public class User_Statistics extends AppCompatActivity
     }
 
 
-    private void click (){
+    private void loadData (){
+
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            StringRequest request = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+
                 @Override
                 public void onResponse(String response) {
                     Log.d(TAG,response.toString());
                     try {
                         JSONObject j= new JSONObject(response.toString());
 
-                        glass.setText(j.getString("glass").toString());
-                        bottle.setText(j.getString("bottle").toString());
-                        save_price.setText(j.getString("paysave").toString());
-                        reduce_waste.setText(j.getString("waste_number").toString());
+                        glass.setText(j.getString("glass"));
+                        bottle.setText(j.getString("bottle"));
+                        save_price.setText(j.getString("paysave"));
+                        reduce_waste.setText(j.getString("waste_number"));
+                        reduce_co2.setText(j.getString("co2_number"));
                         prg.hide();
 
                       // re =  j.getString("bottle").toString();
@@ -234,6 +249,81 @@ public class User_Statistics extends AppCompatActivity
                 }
             };requestQueue.add(request);
         }
+
+
+    public String switchMounth(String m){
+        String mount = "" ;
+        switch (m){
+            case "มกราคม" : mount = "01"; break ;
+            case "กุมภาพันธ์" : mount = "02"; break ;
+            case "มีนาคม" : mount = "03"; break ;
+            case "เมษายน" : mount = "04"; break ;
+            case "พฤษภาคม" : mount = "05"; break ;
+            case "มิถุนายน" : mount = "06"; break ;
+            case "กรกฎาคม" : mount = "07"; break ;
+            case "สิงหาคม" : mount = "08"; break ;
+            case "กันยายน" : mount = "09"; break ;
+            case "ตุลาคม" : mount = "10"; break ;
+            case "พฤศจิกายน" : mount = "11"; break ;
+            case "ธันวาคม" : mount = "12"; break ;
+        }
+        return mount;
+    }
+
+
+    private void click (){  //
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response.toString());
+                try {
+                    JSONObject j= new JSONObject(response.toString());
+
+                    glass.setText(j.getString("glass"));
+                    bottle.setText(j.getString("bottle"));
+                    save_price.setText(j.getString("paysave"));
+                    reduce_waste.setText(j.getString("waste_number"));
+                    reduce_co2.setText(j.getString("co2_number"));
+                    prg.hide();
+
+                    // re =  j.getString("bottle").toString();
+
+                    //Toast.makeText(User_Statistics.this, re, Toast.LENGTH_SHORT).show();
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+                prg.hide();
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",userID);
+                params.put("day1",date);
+                params.put("day2",todate);
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+    }
+
+
+
 
     @Override
     public void onBackPressed() {

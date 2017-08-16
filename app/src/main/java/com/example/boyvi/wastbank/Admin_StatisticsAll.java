@@ -19,9 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,13 +48,206 @@ public class Admin_StatisticsAll extends AppCompatActivity
     SharedPreferences share ;
     Spinner spinnerday, spinnermonth,spinneryear;
     Spinner spinnertoday, spinnertomonth,spinnertoyear;
+
+    String spnDay,spnMonth,spnYear,spnToDay,SpnToMonth,SpnToYear;
+    Button buttonOk, buttonAll;
+    String date;
+    String todate;
+
+    private String day1 ;
+    private String day2 ;
     private ProgressDialog prg ;
     private String userID;
 
     private String TAG = Login.class.getSimpleName();
-    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/admin_showAllstat_main.php";
+    private static final String URL = "http://wastebank.ilab-ubu.net/android/admin_showall_stat_select_day.php";
+    private static final String URL2 = "http://wastebank.ilab-ubu.net/android/admin_showall_stat.php";
 
-    private TextView countuser,glass,bottle,price,reduce_waste,reduce_co2;
+    private TextView countuser,glass,bottle,save_price,reduce_waste,reduce_co2;
+
+    public void findID(){
+
+        buttonOk = (Button) findViewById(R.id.btn_Ok_mount);
+        buttonAll = (Button) findViewById(R.id.showAll);
+        countuser = (TextView) findViewById(R.id.static_people); // ***********************
+        glass = (TextView) findViewById(R.id.static_glass);
+        bottle = (TextView) findViewById(R.id.static_bottle);
+        save_price= (TextView) findViewById(R.id.static_payprice);
+        reduce_waste = (TextView) findViewById(R.id.static_weste);
+        reduce_co2 = (TextView) findViewById(R.id.static_co2);
+    }
+
+
+    public void loadData(){
+              /*share = getSharedPreferences(Pref, Context.MODE_PRIVATE);
+        editor = share.edit();*/
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+            /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+            urlJsonObj, null, new Response.Listener<JSONObject>() */
+        StringRequest request = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+
+            //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,null,new Response.Listener<JSONObject>(){
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response.toString());
+                try{
+
+
+
+                    JSONObject j= new JSONObject(response);
+                    //   JSONObject j = response.getJSONObject("dataUser");
+                    //  String userID = j.getString("id");
+                    String status_String = j.getString("result");
+
+/*
+                    jsonimageprofile = j.getString("pic_profi");
+                    if (jsonimageprofile!="") {
+                        loadimage();//////imafeView
+                    }  */
+
+                    switch(status_String) {
+                        case "OK" :
+
+                            countuser.setText(j.getString("member"));
+                            glass.setText(j.getString("glass"));
+                            bottle.setText(j.getString("bottle"));
+                            save_price.setText(j.getString("paysave"));
+                            reduce_waste.setText(j.getString("waste_number"));
+                            reduce_co2.setText(j.getString("co2_number"));
+                            prg.hide();
+
+
+                            break ;
+                        default:
+                            Toast.makeText(Admin_StatisticsAll.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
+                            break;
+
+                    }
+                    // String status = j.getString("result");
+                    // String Privilege = j.getString("Privilege");
+                    // Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
+
+                }catch (JSONException e){
+                    prg.hide();
+                    //  textviewShow.setText(e.getMessage());
+                    //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Admin_StatisticsAll.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("Whats wrong?", e.toString());
+                    Log.e("JSON Parser", "Error parsing data " + e.toString());
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+                prg.hide();
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",userID);
+
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+
+    }
+
+    public String switchMounth(String m){
+        String mount = "" ;
+        switch (m){
+            case "มกราคม" : mount = "01"; break ;
+            case "กุมภาพันธ์" : mount = "02"; break ;
+            case "มีนาคม" : mount = "03"; break ;
+            case "เมษายน" : mount = "04"; break ;
+            case "พฤษภาคม" : mount = "05"; break ;
+            case "มิถุนายน" : mount = "06"; break ;
+            case "กรกฎาคม" : mount = "07"; break ;
+            case "สิงหาคม" : mount = "08"; break ;
+            case "กันยายน" : mount = "09"; break ;
+            case "ตุลาคม" : mount = "10"; break ;
+            case "พฤศจิกายน" : mount = "11"; break ;
+            case "ธันวาคม" : mount = "12"; break ;
+        }
+        return mount;
+    }
+
+
+    public void click (){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response);
+                try {
+                    JSONObject j= new JSONObject(response);
+                    //   JSONObject j = response.getJSONObject("dataUser");
+                    //  String userID = j.getString("id");
+                    String status_String = j.getString("result");
+
+
+
+                    switch(status_String) {
+                        case "OK" :
+
+                            countuser.setText(j.getString("member"));
+                            glass.setText(j.getString("glass"));
+                            bottle.setText(j.getString("bottle"));
+                            save_price.setText(j.getString("paysave"));
+                            reduce_waste.setText(j.getString("waste_number"));
+                            reduce_co2.setText(j.getString("co2_number"));
+                            prg.hide();
+
+
+                            break ;
+                        default:
+                            Toast.makeText(Admin_StatisticsAll.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
+                            break;
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    prg.hide();
+                    e.printStackTrace();
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+                prg.hide();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",userID);
+                params.put("day1",date);
+                params.put("day2",todate);
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +262,9 @@ public class Admin_StatisticsAll extends AppCompatActivity
         shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
         sharepicture = shareimage.getString("image_data","");
 
-        click ();
+      //  click ();
         findID();
+        loadData();
         prg = new ProgressDialog(Admin_StatisticsAll.this);
         prg.setMessage("รอสักครู่...");
         prg.setCancelable(false);
@@ -84,7 +280,7 @@ public class Admin_StatisticsAll extends AppCompatActivity
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin3);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
 
-        ImageView imagepic =(ImageView) headerView.findViewById(R.id.pictureProfile3);
+        ImageView imagepic =(ImageView) headerView.findViewById(R.id.pic);
 
         if( !sharepicture.equalsIgnoreCase("")){
             byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
@@ -135,71 +331,41 @@ public class Admin_StatisticsAll extends AppCompatActivity
                 android.R.layout.simple_dropdown_item_1line,toyear);
         spinnertoyear.setAdapter(adaptertoyear);
 
-    }
-
-    public void findID(){
-
-        countuser = (TextView) findViewById(R.id.static_people);
-        glass = (TextView) findViewById(R.id.static_glass);
-        bottle = (TextView) findViewById(R.id.static_bottle);
-        price= (TextView) findViewById(R.id.static_payprice);
-        reduce_waste = (TextView) findViewById(R.id.static_weste);
-        reduce_co2 = (TextView) findViewById(R.id.static_co2);
-    }
-
-
-
-    private void click (){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        buttonAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                Log.d(TAG,response.toString());
-                try {
-                    JSONObject j= new JSONObject(response.toString());
+            public void onClick(View v) {
 
-                    countuser.setText(j.getString("usercount").toString());
-                    glass.setText(j.getString("glass").toString());
-                    bottle.setText(j.getString("bottle").toString());
-                    price.setText(j.getString("paysave").toString());
-                    reduce_waste.setText(j.getString("waste_number").toString());
-
-                    prg.hide();
-
-                    // re =  j.getString("bottle").toString();
-
-                    //Toast.makeText(User_Statistics.this, re, Toast.LENGTH_SHORT).show();
-
-
-
-                } catch (JSONException e) {
-                    prg.hide();
-                    e.printStackTrace();
-
-                }
-
-
+                loadData();
             }
-        }, new Response.ErrorListener() {
+        });
+
+        buttonOk.setOnClickListener(new View.OnClickListener(){
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG,error.toString());
-                //  textviewShow.setText("Error");
-                prg.hide();
+            public void onClick(View v) {
 
+                prg.show();
+                spnDay = spinnerday.getSelectedItem().toString();
+                spnMonth = spinnermonth.getSelectedItem().toString();
+                spnYear = spinneryear.getSelectedItem().toString();
+                spnToDay = spinnertoday.getSelectedItem().toString();
+                SpnToMonth = spinnertomonth.getSelectedItem().toString();
+                SpnToYear = spinnertoyear.getSelectedItem().toString();
+
+
+                /////////// ต่อสติงวันที่เเล้ว
+                String MonthNumber  = switchMounth(spnMonth);
+                String MonthNumber2  = switchMounth(SpnToMonth);
+
+                date = spnYear+"-"+MonthNumber+"-"+spnDay+"%";
+                todate = SpnToYear+"-"+MonthNumber2+"-"+spnToDay+"%";
+                //Toast.makeText(Admin_StatisticsYou.this, date, Toast.LENGTH_SHORT).show();
+                 Toast.makeText(Admin_StatisticsAll.this,userID +" "+date+" "+ todate, Toast.LENGTH_SHORT).show();
+                click();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("userID",userID);
-                return params;
+        });
 
-
-            }
-        };requestQueue.add(request);
     }
-
 
 
 

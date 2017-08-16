@@ -58,7 +58,7 @@ public class User_reduce extends AppCompatActivity
     private String sharepicture;
     ProgressDialog prg ;
     private String TAG = User_reduce.class.getSimpleName();
-    private  String URL =  "https://jirayuhe57.000webhostapp.com/android/use_reduce.php";
+    private  String URL =  "http://wastebank.ilab-ubu.net/android/use_reduce.php";
     private ImageView ImgGlass , ImgBottle ;
     private String userID,paysave ;
     private String type = "0";
@@ -160,8 +160,12 @@ public class User_reduce extends AppCompatActivity
                                  Toast.makeText(getApplicationContext(),
                                          "บันทึกเสร็จสิ้น", Toast.LENGTH_LONG).show();
                                  break;
+                             case "NO" : prg.hide();
+                                 Toast.makeText(getApplicationContext(),
+                                         "ไม่สามารถบันทึกได้", Toast.LENGTH_LONG).show();
                              default: Toast.makeText(getApplicationContext(),
-                                     "ไมีปัญหาบางอย่าง!!! ไม่สามารถบันทึกได้", Toast.LENGTH_LONG).show();
+                                     "มีปัญหาบางอย่าง!!! ไม่สามารถบันทึกได้", Toast.LENGTH_LONG).show();
+                                 prg.hide();
                                  break;
                          }
                     }catch (JSONException e){

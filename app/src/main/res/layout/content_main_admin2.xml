@@ -29,10 +29,10 @@
         android:layout_marginEnd="8dp" />
 
     <TextView
-        android:id="@+id/textView95"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="นาย ลดขยะ ก็ดีนะ"
+        android:text=" "
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
         android:layout_marginEnd="8dp" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/profileSearch"
         android:layout_width="106dp"
         android:layout_height="107dp"
         app:srcCompat="@drawable/testuser"
@@ -272,7 +272,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView84"
+                android:id="@+id/static_glass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -293,7 +293,7 @@
                 app:layout_constraintVertical_bias="0.602" />
 
             <TextView
-                android:id="@+id/textView86"
+                android:id="@+id/static_bottle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -314,7 +314,7 @@
                 app:layout_constraintVertical_bias="0.681" />
 
             <TextView
-                android:id="@+id/textView87"
+                android:id="@+id/static_payprice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -335,7 +335,7 @@
                 app:layout_constraintVertical_bias="0.755" />
 
             <TextView
-                android:id="@+id/textView89"
+                android:id="@+id/static_weste"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -356,7 +356,7 @@
                 app:layout_constraintVertical_bias="0.825" />
 
             <TextView
-                android:id="@+id/textView88"
+                android:id="@+id/static_co2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

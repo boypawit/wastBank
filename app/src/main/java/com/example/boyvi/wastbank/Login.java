@@ -39,7 +39,8 @@ public class Login extends AppCompatActivity {
     private String id,name,glass,bottle,paysave ;
     SharedPreferences share ;
     SharedPreferences.Editor editor;
-    private static final String URL = "https://jirayuhe57.000webhostapp.com/android/login.php";
+   // private static final String URL = "https://jirayuhe57.000webhostapp.com/android/login.php";
+    private static final String URL = "http://wastebank.ilab-ubu.net/android/login.php";
     private  String Privilege;
     private String user,pass;
     private String loginState;
@@ -96,9 +97,9 @@ public class Login extends AppCompatActivity {
                                     intent.putExtra("bottle",j.getString("bottle"));
                                     intent.putExtra("glass",j.getString("glass"));*/
 
-                                    id = j.getString("id").toString();
+                                    id = j.getString("id");
                                     name = j.getString("name");
-                                    glass = j.getString("glass").toString();
+                                    glass = j.getString("glass");
                                     bottle = j.getString("bottle");
                                     paysave = j.getString("paysave");
 
@@ -194,6 +195,7 @@ public class Login extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG,error.toString());
                     //  textviewShow.setText("Error");
+                    Toast.makeText(Login.this,"มีข้อผิดพลาด",Toast.LENGTH_SHORT).show();
                     prg.hide();
 
 

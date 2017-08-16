@@ -56,7 +56,7 @@ public class Adnin_Reduce extends AppCompatActivity
     private static final String Pref = "PrefWasteBank";
     ProgressDialog prg ;
     private String TAG = User_reduce.class.getSimpleName();
-    private  String URL =  "https://jirayuhe57.000webhostapp.com/android/use_reduce.php";
+    private  String URL =  "http://wastebank.ilab-ubu.net/android/use_reduce.php";
     private ImageView ImgGlass , ImgBottle ;
     private String userID,paysave ="0" ;
     private String type = "0";

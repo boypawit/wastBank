@@ -53,10 +53,12 @@ public class Admin_Search extends AppCompatActivity
     String spnselectGender;
     String selecetspn;
     ImageButton btnsearch;
-    TextView search;
+    private TextView search,glass,bottle,save_price,reduce_waste,reduce_co2;
+   private ImageView imageProfile ;
     String textsearch;
     private ProgressDialog prg ;
-    private String URL = "https://jirayuhe57.000webhostapp.com/android/test.php";
+    private String URL = "http://wastebank.ilab-ubu.net/android/admin_search_user.php";
+
     private String TAG = Admin_Search.class.getSimpleName();
 
 
@@ -101,12 +103,19 @@ public class Admin_Search extends AppCompatActivity
                 android.R.layout.simple_dropdown_item_1line,gender);
         spinnerGender.setAdapter(adaptertoday);
 
-        btnsearch = (ImageButton) findViewById(R.id.buttonSearch);
+
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textsearch = search.getText().toString();
                 spnselectGender = spinnerGender.getSelectedItem().toString();
+                switch (spnselectGender) {
+                    case "รหัสนักศึกษา" :
+                        spnselectGender = "studentID" ;
+                        break;
+                    case "ชื่อ-สกุล" :
+                        spnselectGender = "name" ;
+                }
                 loadData();
                 prg = new ProgressDialog(Admin_Search.this);
                 prg.setMessage("รอสักครู่...");
@@ -118,9 +127,17 @@ public class Admin_Search extends AppCompatActivity
         });
     }
 
-private void findID(){
-    search = (TextView) findViewById(R.id.textSearch);
-}
+    private void findID(){
+
+        search = (TextView) findViewById(R.id.textSearch);
+        btnsearch = (ImageButton) findViewById(R.id.buttonSearch);
+        glass = (TextView) findViewById(R.id.static_glass);
+        bottle = (TextView) findViewById(R.id.static_bottle);
+        save_price= (TextView) findViewById(R.id.static_payprice);
+        reduce_waste = (TextView) findViewById(R.id.static_weste);
+        reduce_co2 = (TextView) findViewById(R.id.static_co2);
+        imageProfile = (ImageView) findViewById(R.id.profileSearch) ;
+    }
 
 
     private void loadData (){
@@ -130,29 +147,32 @@ private void findID(){
 
            @Override
             public void onResponse(String response) {
-                Log.d(TAG,response.toString());
+                Log.d(TAG,response);
                 try{
 
-                    JSONObject j= new JSONObject(response.toString());
+                    JSONObject j= new JSONObject(response);
                     String status_String = j.getString("result");
                     Toast.makeText(Admin_Search.this,status_String,Toast.LENGTH_SHORT).show();
                     prg.hide();
 
-                   /*
+
                     switch(status_String) {
                         case "OK" :
                             // Toast.makeText(User_Main.this,id,Toast.LENGTH_SHORT).show();
-                            prg.hide();
-                           /* glass.setText(j.getString("glass"));
+
+                            glass.setText(j.getString("glass"));
                             bottle.setText(j.getString("bottle"));
-                            paysave.setText(j.getString("paysave"));
+                            save_price.setText(j.getString("paysave"));
+                            reduce_waste.setText(j.getString("waste_number"));
+                            reduce_co2.setText(j.getString("co2_number"));
+                            prg.hide();
 
                             break ;
                         default:
                             Toast.makeText(Admin_Search.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
                             break;
 
-                    }*/
+                    }
 
                 }catch (JSONException e){
                     prg.hide();
@@ -177,8 +197,8 @@ private void findID(){
             @Override
             protected Map<String, String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("select",spnselectGender);
-                params.put("search",textsearch);
+                params.put("key",spnselectGender);
+                params.put("value",textsearch);
                 return params;
 
 
@@ -186,6 +206,9 @@ private void findID(){
         };requestQueue.add(request);
 
     }
+
+
+
 
 
 

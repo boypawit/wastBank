@@ -50,10 +50,13 @@ public class Admin_Main extends AppCompatActivity
     private TextView glass,bottle,paysave;
     private String id ;
 
-    private String URL = "https://jirayuhe57.000webhostapp.com/android/admin_showAllstat_main.php";
+   // private String URL = "https://jirayuhe57.000webhostapp.com/android/admin_showall_stat_main.php";
+   private static final String URL = "http://wastebank.ilab-ubu.net/android/admin_showall_stat_main.php";
     private String UrlPicture;
     private String jsonimageprofile;
     ImageView imageProfile;
+
+    private String PrivilageProfile ;
 
     private String TAG = Admin_Main.class.getSimpleName();
     public void findID(){
@@ -87,18 +90,21 @@ public class Admin_Main extends AppCompatActivity
                         //  String userID = j.getString("id");
                         String status_String = j.getString("result");
 
-
+                        PrivilageProfile = j.getString("Privilege");
                         jsonimageprofile = j.getString("pic_profi");
-                             if (jsonimageprofile!="") {
+                            if (jsonimageprofile!="") {
                                      loadimage();//////imafeView
-                                }
+                            }else {
+                                loadimageNullProfile();
+                            }
 
+                        loadimageNullProfile();
                         switch(status_String) {
                             case "OK" :
                             prg.hide();
-                            glass.setText(j.getString("glass").toString());
-                            bottle.setText(j.getString("bottle").toString());
-                            paysave.setText(j.getString("paysave").toString());
+                            glass.setText(j.getString("glass"));
+                            bottle.setText(j.getString("bottle"));
+                            paysave.setText(j.getString("paysave"));
 
                             break ;
                             default:
@@ -145,7 +151,13 @@ public class Admin_Main extends AppCompatActivity
 
 
     private void loadimage(){
-        UrlPicture = "https://jirayuhe57.000webhostapp.com/android/images/"+jsonimageprofile;
+      //  UrlPicture = "https://jirayuhe57.000webhostapp.com/android/images/"+jsonimageprofile;
+       switch (PrivilageProfile){
+           case "0": UrlPicture = "http://wastebank.ilab-ubu.net/profile/personal/"+jsonimageprofile; break;
+           case "1": UrlPicture = "http://wastebank.ilab-ubu.net/profile/personal/"+jsonimageprofile; break;
+           case "2": UrlPicture = "http://wastebank.ilab-ubu.net/profile/student/"+jsonimageprofile;  break;
+       }
+        // UrlPicture = "http://wastebank.ilab-ubu.net/profile/null.jpg";
         ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
             @Override
             public void onResponse(Bitmap bitmap) {
@@ -168,6 +180,44 @@ public class Admin_Main extends AppCompatActivity
                 editorimage = shareimage.edit();
                 editorimage.putString("image_data",encodedImage);
                 editorimage.commit();
+            }
+        },0,0, ImageView.ScaleType.FIT_XY,null,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(imageRequest);
+
+    }
+
+    private void loadimageNullProfile(){
+        UrlPicture = "http://wastebank.ilab-ubu.net/profile/null.jpg";
+        // UrlPicture = "http://wastebank.ilab-ubu.net/profile/null.jpg";
+        ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
+            @Override
+            public void onResponse(Bitmap bitmap) {
+
+
+                imageProfile.setImageBitmap(bitmap);
+               /* shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+                editorimage = share.edit();
+*/
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos);
+                byte[] b = baos.toByteArray();
+
+                String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+                //Toast.makeText(getApplicationContext(),encodedImage.toString(),Toast.LENGTH_LONG).show();
+                // textEncode.setText(encodedImage);
+
+          /*      shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+                editorimage = shareimage.edit();
+                editorimage.putString("image_data",encodedImage);
+                editorimage.commit();*/
             }
         },0,0, ImageView.ScaleType.FIT_XY,null,
                 new Response.ErrorListener() {
@@ -211,7 +261,7 @@ public class Admin_Main extends AppCompatActivity
 
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main_admin);
         TextView name = (TextView) headerView.findViewById(R.id.nav_name);
-        imageProfile = (ImageView) headerView.findViewById(R.id.imageProfile);
+        imageProfile = (ImageView) headerView.findViewById(R.id.pic);
 
         name.setText(share.getString("name","No"));
         navigationView.setNavigationItemSelectedListener(this);
