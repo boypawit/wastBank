@@ -240,7 +240,7 @@ public class User_reduce extends AppCompatActivity
 
         ImageView image =(ImageView) headerView.findViewById(R.id.imageProfileUser);
 
-        if( !sharepicture.equalsIgnoreCase("")){
+        if( sharepicture!=""){
             byte[] b = Base64.decode(sharepicture, Base64.DEFAULT);
             Bitmap bitm = BitmapFactory.decodeByteArray(b, 0, b.length);
             image.setImageBitmap(bitm);

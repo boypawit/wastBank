@@ -54,7 +54,7 @@ public class User_Main extends AppCompatActivity
    // private String URL = "https://jirayuhe57.000webhostapp.com/android/user_show_main.php";
    private static final String URL = "http://wastebank.ilab-ubu.net/android/user_show_main.php";
     private String UrlPicture;
-    private String jsonimageprofile;
+    private String jsonimageprofile="";
     ImageView imageProfile;
     private String PrivilageProfile ;
 
@@ -95,13 +95,7 @@ public class User_Main extends AppCompatActivity
                     String status_String = j.getString("result");
                     PrivilageProfile = j.getString("Privilege");
                     jsonimageprofile = j.getString("pic_profi");
-                    if (jsonimageprofile!="") {
-                        loadimage();//////imafeView
-                    }else {
-                        loadimageNullProfile();
-                    }
-
-                    loadimageNullProfile();
+                    loadimage();//////imafeView
 
                     switch(status_String) {
                         case "OK" :
@@ -230,7 +224,7 @@ public class User_Main extends AppCompatActivity
 
     private void loadimage(){
         //  UrlPicture = "https://jirayuhe57.000webhostapp.com/android/images/"+jsonimageprofile;
-        switch (PrivilageProfile){
+         switch (PrivilageProfile){
             case "0": UrlPicture = "http://wastebank.ilab-ubu.net/profile/personal/"+jsonimageprofile; break;
             case "1": UrlPicture = "http://wastebank.ilab-ubu.net/profile/personal/"+jsonimageprofile; break;
             case "2":UrlPicture = "http://wastebank.ilab-ubu.net/profile/student/"+jsonimageprofile;  break;
@@ -239,8 +233,6 @@ public class User_Main extends AppCompatActivity
         ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
             @Override
             public void onResponse(Bitmap bitmap) {
-
-
                 imageProfile.setImageBitmap(bitmap);
                /* shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
                 editorimage = share.edit();
@@ -258,12 +250,17 @@ public class User_Main extends AppCompatActivity
                 editorimage = shareimage.edit();
                 editorimage.putString("image_data",encodedImage);
                 editorimage.commit();
+
             }
         },0,0, ImageView.ScaleType.FIT_XY,null,
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
+                        shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
+                        editorimage = shareimage.edit();
+                        editorimage.putString("image_data","");
+                        editorimage.commit();
                     }
                 });
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -271,43 +268,6 @@ public class User_Main extends AppCompatActivity
 
     }
 
-    private void loadimageNullProfile(){
-        UrlPicture = "http://wastebank.ilab-ubu.net/profile/null.jpg";
-        // UrlPicture = "http://wastebank.ilab-ubu.net/profile/null.jpg";
-        ImageRequest imageRequest = new ImageRequest(UrlPicture,new Response.Listener<Bitmap>(){
-            @Override
-            public void onResponse(Bitmap bitmap) {
-
-
-                imageProfile.setImageBitmap(bitmap);
-               /* shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
-                editorimage = share.edit();
-*/
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos);
-                byte[] b = baos.toByteArray();
-
-                String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
-
-                //Toast.makeText(getApplicationContext(),encodedImage.toString(),Toast.LENGTH_LONG).show();
-                // textEncode.setText(encodedImage);
-
-                shareimage = getSharedPreferences("imageprofile", Context.MODE_PRIVATE);
-                editorimage = shareimage.edit();
-                editorimage.putString("image_data",encodedImage);
-                editorimage.commit();
-            }
-        },0,0, ImageView.ScaleType.FIT_XY,null,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(imageRequest);
-
-    }
 
     @Override
     public void onBackPressed() {

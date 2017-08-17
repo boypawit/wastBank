@@ -56,7 +56,7 @@ public class Admin_Search extends AppCompatActivity
     String selecetspn;
     ImageButton btnsearch;
     private TextView search,glass,bottle,save_price,reduce_waste,reduce_co2,name;
-   private ImageView imageProfile ;
+    private ImageView imageProfile ;
     String textsearch;
     private ProgressDialog prg ;
     private String URL = "http://wastebank.ilab-ubu.net/android/admin_search_user.php";
@@ -167,7 +167,7 @@ public class Admin_Search extends AppCompatActivity
         switch (PrivilageProfile){
             case "0": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
             case "1": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/personal/"+imagesearch; break;
-  //          case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/student1.jpg";  break;
+            //          case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/student1.jpg";  break;
             case "2": UrlImagesearch = "http://wastebank.ilab-ubu.net/profile/student/"+imagesearch;  break;
         }
         ImageRequest imageRequest = new ImageRequest(UrlImagesearch,new Response.Listener<Bitmap>(){
@@ -181,6 +181,7 @@ public class Admin_Search extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        imageProfile.setImageResource(R.drawable.testuser);
 
                     }
                 });
@@ -196,14 +197,14 @@ public class Admin_Search extends AppCompatActivity
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
-           @Override
+            @Override
             public void onResponse(String response) {
                 Log.d(TAG,response);
                 try{
 
                     JSONObject j= new JSONObject(response);
                     String status_String = j.getString("result");
-                   // Toast.makeText(Admin_Search.this,status_String,Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(Admin_Search.this,status_String,Toast.LENGTH_SHORT).show();
                     prg.hide();
 
 
@@ -219,9 +220,9 @@ public class Admin_Search extends AppCompatActivity
 
                             //////////// image//////////
                             PrivilageProfile = j.getString("Privilege");
-                       //     PrivilageProfile = "2";
+                            //     PrivilageProfile = "2";
                             imagesearch = j.getString("pic_profi");
-                        //    Toast.makeText(Admin_Search.this,j.getString("name"),Toast.LENGTH_SHORT).show();
+                            //    Toast.makeText(Admin_Search.this,j.getString("name"),Toast.LENGTH_SHORT).show();
                             searchImage ();
 
 
@@ -239,7 +240,7 @@ public class Admin_Search extends AppCompatActivity
                     prg.hide();
                     //  textviewShow.setText(e.getMessage());
                     //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-                   // Toast.makeText(Admin_Search.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(Admin_Search.this, e.toString(), Toast.LENGTH_SHORT).show();
 
                     Toast.makeText(Admin_Search.this,spnselectGender + " " + textsearch, Toast.LENGTH_SHORT).show();
                     Log.d("Whats wrong?", e.toString());

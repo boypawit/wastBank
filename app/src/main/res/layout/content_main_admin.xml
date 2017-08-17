@@ -31,103 +31,103 @@
         android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="ลดจำนวนเเก้วรวมได้"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintRight_toLeftOf="@+id/glass"
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="@+id/glass"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/glass"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="145dp"
+        android:layout_height="18dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="ลดค่าใช้จ่ายรวมได้"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintRight_toLeftOf="@+id/paysave"
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="@+id/paysave"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/paysave"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="ลดจำนวนขวดรวมได้"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintRight_toLeftOf="@+id/bottle"
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="@+id/bottle"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottle"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.302"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:text="กรัม"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.813" />
+        app:layout_constraintLeft_toRightOf="@+id/glass"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="@+id/glass"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/glass"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="บาท"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintLeft_toRightOf="@+id/paysave"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="@+id/paysave"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/paysave"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="กรัม"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintLeft_toRightOf="@+id/bottle"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="@+id/bottle"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottle"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/glass"
@@ -141,11 +141,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.635"
+        app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.264" />
 
     <TextView
         android:id="@+id/bottle"
@@ -159,11 +159,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.635"
+        app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.403" />
 
     <TextView
         android:id="@+id/paysave"
@@ -180,38 +180,37 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.635"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintVertical_bias="0.551" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="69dp"
         android:layout_height="133dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
+        app:srcCompat="@drawable/water"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922"
-        app:srcCompat="@drawable/water" />
+        app:layout_constraintLeft_toRightOf="@+id/imageAdmin"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageAdmin"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintTop_toTopOf="@+id/imageAdmin"
+        android:layout_marginTop="0dp" />
 
     <ImageView
         android:id="@+id/imageAdmin"
         android:layout_width="86dp"
         android:layout_height="133dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@drawable/glass"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922"
-        app:srcCompat="@drawable/glass" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintVertical_bias="0.908" />
 </android.support.constraint.ConstraintLayout>
