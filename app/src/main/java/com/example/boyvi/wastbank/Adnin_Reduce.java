@@ -109,13 +109,13 @@ public class Adnin_Reduce extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_admin3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         verifyStoragePermissions(this);
         ///////Edit by pawit//////////
         findID();
-       // noimage.setRotation(90);
+        // noimage.setRotation(90);
 
         share = getSharedPreferences("PrefWasteBank", Context.MODE_PRIVATE);
         userID = share.getString("id","No value") ;

@@ -175,6 +175,9 @@ public class Admin_Search extends AppCompatActivity
             public void onResponse(Bitmap bitmap) {
 
                 imageProfile.setImageBitmap(bitmap);
+                UrlImagesearch="";
+
+
 
             }
         },0,0, ImageView.ScaleType.FIT_XY,null,
@@ -183,10 +186,12 @@ public class Admin_Search extends AppCompatActivity
                     public void onErrorResponse(VolleyError error) {
                         imageProfile.setImageResource(R.drawable.testuser);
 
+
                     }
                 });
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(imageRequest);
+
 
     }
 
@@ -222,8 +227,8 @@ public class Admin_Search extends AppCompatActivity
                             PrivilageProfile = j.getString("Privilege");
                             //     PrivilageProfile = "2";
                             imagesearch = j.getString("pic_profi");
-                            //    Toast.makeText(Admin_Search.this,j.getString("name"),Toast.LENGTH_SHORT).show();
-                            searchImage ();
+                               // Toast.makeText(Admin_Search.this,imagesearch,Toast.LENGTH_SHORT).show();
+                                searchImage();
 
 
 
