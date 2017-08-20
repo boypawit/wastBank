@@ -297,7 +297,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="0.76"
-                android:text="ลดคปริมาณ CO2"
+                android:text="ลดปริมาณ CO2"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -235,6 +235,21 @@ public class Admin_Search extends AppCompatActivity
                             prg.hide();
 
                             break ;
+
+                        case "FALSE":
+
+                            Toast.makeText(Admin_Search.this,j.getString("message"),Toast.LENGTH_SHORT).show();
+
+                            name.setText("");
+                            glass.setText("0");
+                            bottle.setText("0");
+                            save_price.setText("0");
+                            reduce_waste.setText("0");
+                            reduce_co2.setText("0");
+
+                            imageProfile.setImageResource(R.drawable.testuser);
+
+                            break;
                         default:
                             Toast.makeText(Admin_Search.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
                             break;

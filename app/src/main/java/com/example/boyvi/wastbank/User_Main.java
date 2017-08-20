@@ -53,6 +53,9 @@ public class User_Main extends AppCompatActivity
     private ProgressDialog prg ;
    // private String URL = "https://jirayuhe57.000webhostapp.com/android/user_show_main.php";
    private static final String URL = "http://wastebank.ilab-ubu.net/android/user_show_main.php";
+    private static final String URL_setting = "http://wastebank.ilab-ubu.net/android/query_setting.php";
+    String glass_query,bottle_query ;
+
     private String UrlPicture;
     private String jsonimageprofile="";
     ImageView imageProfile;
@@ -70,6 +73,71 @@ public class User_Main extends AppCompatActivity
         paysave = (TextView) this.findViewById(R.id.paysave);
 
     }
+
+    private void  query_setting(){
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_setting, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG,response);
+                try{
+
+
+
+                    JSONObject j= new JSONObject(response);
+
+                    String status_String = j.getString("result");
+
+
+                    switch(status_String) {
+                        case "OK" :
+                            glass_query = j.getString("glass_co2");
+                            bottle_query = j.getString("bottle_co2");
+                            aleatDetail(glass_query,bottle_query);
+                            break ;
+                        default:
+                            Toast.makeText(User_Main.this,"ไม่สามารถโหลดข้อมูลการใช้งานได้",Toast.LENGTH_SHORT).show();
+                            break;
+
+                    }
+
+                }catch (JSONException e){
+
+                    //  textviewShow.setText(e.getMessage());
+                    //  Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(User_Main.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("Whats wrong?", e.toString());
+                    Log.e("JSON Parser", "Error parsing data " + e.toString());
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG,error.toString());
+                //  textviewShow.setText("Error");
+
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("userID",id);
+
+                return params;
+
+
+            }
+        };requestQueue.add(request);
+
+    }
+
 
     private void loadData (){
 
@@ -161,7 +229,8 @@ public class User_Main extends AppCompatActivity
         id = share.getString("id","");
         //Toast.makeText(User_Main.this,id,Toast.LENGTH_SHORT).show();
 
-            aleatDetail();
+        query_setting();
+           // aleatDetail();
 
 
         findID();
@@ -310,13 +379,12 @@ public class User_Main extends AppCompatActivity
         return true;
     }
 
-    public void aleatDetail(){
+    public void aleatDetail(String glass,String bottle){
         AlertDialog.Builder builder = new AlertDialog.Builder(User_Main.this);
         builder.setTitle("                      รู้หรือไม่?");
-        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ 10 กรัม \n" +
-                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ 10 กรัม");
-
-        builder.setPositiveButton("ตกลง", null);
+        builder.setMessage("\nขวด 1 ขวด ลดคาร์บอนไดออกไซด์ได้ " +bottle+ " กรัมCO2\n" +
+                "\nแก้ว 1 ใบ  ลดคาร์บอนไดออกไซด์ได้ "+ glass +" กรัมCO2");
+        builder.setNegativeButton("ตกลง", null);
         builder.show();
 
 
